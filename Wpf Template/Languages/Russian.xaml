@@ -7,7 +7,10 @@
     <v:String x:Key="LangSyles">Стили</v:String>
     <v:String x:Key="LangError">Ошибка</v:String>
     <v:String x:Key="LangMessage">Сообщение</v:String>
-
+    <v:String x:Key="LangFile">Файл</v:String>
+    <v:String x:Key="LangOptions">Настройки</v:String>
+    <v:String x:Key="LangExit">Выход</v:String>
+    
     <v:String x:Key="LangPrimarycolor">Первичный цвет</v:String>
     <v:String x:Key="LangSecondarycolor">Вторичный цвет</v:String>
     <v:String x:Key="LangBackground">Фон</v:String>

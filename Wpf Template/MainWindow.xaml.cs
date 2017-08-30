@@ -14,7 +14,6 @@ namespace Wpf_Template
         public MainWindow()
         {
             InitializeComponent();
-            PopSettings.Closed += (s, e) => { BodyGrid.Effect = null; };
             ThemeBox.SelectionChanged += ThemeChange;
             ThemeBox.ItemsSource = Enum.GetValues(typeof(Settings.Theme)).Cast<Settings.Theme>();
             ThemeBox.SelectedItem = Settings.Current.AppTheme;
@@ -24,7 +23,7 @@ namespace Wpf_Template
            
         }
 
-        #region GUI
+        #region GUI 
 
         private void BExit_Click(object sender, RoutedEventArgs e)
         {
@@ -44,7 +43,6 @@ namespace Wpf_Template
 
         private void BSettings_Click(object sender, RoutedEventArgs e)
         {
-            BodyGrid.Effect = new BlurEffect();
             PopSettings.IsOpen = true;
         }
 
@@ -144,7 +142,17 @@ namespace Wpf_Template
             }
         }
         #endregion
-        
+
+
+        private void OnMenuOpening(object sender, object e)
+        {
+            BodyGrid.Effect = new BlurEffect { Radius = 5 };
+        }
+
+        private void OnMenuClosing(object sender, object e)
+        {
+            BodyGrid.Effect = null;
+        }
         #endregion
 
 

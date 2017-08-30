@@ -7,6 +7,9 @@
     <v:String x:Key="LangSyles">Styles</v:String>
     <v:String x:Key="LangError">Error</v:String>
     <v:String x:Key="LangMessage">Message</v:String>
+    <v:String x:Key="LangFile">File</v:String>
+    <v:String x:Key="LangOptions">Options</v:String>
+    <v:String x:Key="LangExit">Exit</v:String>
 
     <v:String x:Key="LangPrimarycolor">Primary color</v:String>
     <v:String x:Key="LangSecondarycolor">Secondary color</v:String>

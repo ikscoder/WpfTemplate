@@ -24,7 +24,7 @@ namespace Wpf_Template
             {
     
                 LoadingLabel.Content = "Useless Loading...";
-                await Task.Run(() => { Thread.Sleep(5000); });
+                await Task.Run(() => { Thread.Sleep(2000); });
                 Hide();
                 new MainWindow().Show();
             }

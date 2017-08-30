@@ -20,6 +20,13 @@
             <EventSetter Event="MouseMove" Handler="Resizeing_Form"/>
         </Style>
     </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Close" Executed="BExit_Click"/>
+        <CommandBinding Command="ApplicationCommands.Properties" Executed="BSettings_Click"/>
+    </Window.CommandBindings>
+    <Window.InputBindings>
+        <KeyBinding Command="ApplicationCommands.Properties" Gesture="CTRL+O"/>
+    </Window.InputBindings>
     <Grid>
         <Rectangle x:Name="LeftSizeGrip" Width="8" HorizontalAlignment="Left" Cursor="SizeWE" Style="{StaticResource RectBorderStyle}" Panel.ZIndex="200" />
         <Rectangle x:Name="RightSizeGrip" Width="8" HorizontalAlignment="Right" Cursor="SizeWE" Style="{StaticResource RectBorderStyle}"  Panel.ZIndex="200"/>
@@ -30,40 +37,56 @@
         <Rectangle x:Name="BottomRightSizeGrip" Width="8" Height="8" HorizontalAlignment="Right" VerticalAlignment="Bottom" Cursor="SizeNWSE" Style="{StaticResource RectBorderStyle}"  Panel.ZIndex="200"/>
         <Rectangle x:Name="TopRightSizeGrip" Width="8" Height="8" HorizontalAlignment="Right" VerticalAlignment="Top" Cursor="SizeNESW" Style="{StaticResource RectBorderStyle}" Panel.ZIndex="200" />
         <Rectangle x:Name="BottomLeftSizeGrip" Width="8" Height="8" HorizontalAlignment="Left" VerticalAlignment="Bottom" Cursor="SizeNESW" Style="{StaticResource RectBorderStyle}"  Panel.ZIndex="200"/>
-        <Grid x:Name="HeaderGrid" Background="{DynamicResource PrimaryColor}" Height="40" VerticalAlignment="Top" MouseDown="Drag">
-            <Button x:Name="BExit" Width="24" Style="{DynamicResource TranspButton}" Margin="0,0,5,0" Height="40" HorizontalAlignment="Right" Click="BExit_Click">
-                <Border>
+        <Grid x:Name="HeaderGrid" Background="{DynamicResource PrimaryColor}" Height="30" VerticalAlignment="Top" MouseDown="Drag">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="45"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="5" x:Name="BExit" Style="{DynamicResource MenuIconedDanger}" Margin="0,0,0,0" HorizontalAlignment="Stretch" Click="BExit_Click" VerticalAlignment="Stretch">
+                <Border Width="16">
                     <Path Data="{StaticResource Exit}" Fill="{DynamicResource TextOnDarkColor}" Stretch="Uniform"/>
                 </Border>
             </Button>
-            <Button x:Name="BMaximize" Width="24" Style="{DynamicResource TranspButton}" Margin="0,0,34,0" Height="40" HorizontalAlignment="Right" Click="BMaximize_Click">
-                <Border>
+            <Button Grid.Column="4" x:Name="BMaximize" Style="{DynamicResource MenuIconed}" Margin="0,0,0,0" HorizontalAlignment="Stretch" Click="BMaximize_Click" VerticalAlignment="Stretch">
+                <Border Width="16">
                     <Path Data="{StaticResource Maximize}" Fill="{DynamicResource TextOnDarkColor}" Stretch="Uniform"/>
                 </Border>
             </Button>
-            <Button x:Name="BMinimize" Width="24" Style="{DynamicResource TranspButton}" Margin="0,0,63,0" Height="40" HorizontalAlignment="Right" Click="BMinimize_Click">
-                <Border>
+            <Button Grid.Column="3" x:Name="BMinimize" Style="{DynamicResource MenuIconed}" Margin="0,0,0,0" HorizontalAlignment="Stretch" Click="BMinimize_Click" VerticalAlignment="Stretch">
+                <Border Width="16">
                     <Path Data="{StaticResource Minimize}" Fill="{DynamicResource TextOnDarkColor}" Stretch="Uniform"/>
                 </Border>
             </Button>
-            <Button x:Name="BAlwaysOnTop" RenderTransformOrigin="0.5,0.5" Width="24" Style="{DynamicResource TranspButton}" Margin="0,0,92,0"
-                    Height="40" HorizontalAlignment="Right" Click="BAlwaysOnTop_Click">
-                <Border>
+            <Button Grid.Column="2" Style="{DynamicResource MenuIconed}" Margin="0,0,0,0"
+                     HorizontalAlignment="Stretch" Click="BAlwaysOnTop_Click" VerticalAlignment="Stretch">
+                <Border x:Name="BAlwaysOnTop" Width="18" RenderTransformOrigin="0.5,0.5">
                     <Path Data="{StaticResource DrawingPin}" Fill="{DynamicResource TextOnDarkColor}" Stretch="Uniform"/>
                 </Border>
             </Button>
-            <Button x:Name="BSettings" Width="40" Style="{DynamicResource TranspButton}" Margin="10,0,5,0" Height="40"
-                    Click="BSettings_Click">
-                <Border>
+            <Button Grid.Column="0" x:Name="BSettings"
+                    Click="BSettings_Click" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{DynamicResource MenuIconed}">
+                <Border Width="30">
                     <Path Data="{StaticResource Settings}" Fill="{DynamicResource TextOnDarkColor}" Stretch="Uniform"/>
                 </Border>
             </Button>
-            <Label Content="{Binding Title, ElementName=Window}" HorizontalAlignment="Left" Margin="55,0,0,0" Foreground="{DynamicResource TextOnDarkColor}" FontFamily="{DynamicResource FontFamilyHighlight}" FontSize="{DynamicResource FontSizeBig}" VerticalContentAlignment="Center"/>
+            <Label Grid.Column="1" Content="{Binding Title, ElementName=Window}" HorizontalAlignment="Center" Margin="0,0,0,0" Foreground="{DynamicResource TextOnDarkColor}" FontFamily="{DynamicResource FontFamilyHighlight}" FontSize="{DynamicResource FontSizeBig}" VerticalContentAlignment="Center"/>
+            <Menu Grid.Column="1" HorizontalAlignment="Left" Padding="5" Background="{DynamicResource PrimaryColor}">
+                <MenuItem Header="{DynamicResource LangFile}" Style="{DynamicResource PrimaryMenuItem}" SubmenuOpened="OnMenuOpening" SubmenuClosed="OnMenuClosing">
+                    <Separator/>
+                    <MenuItem Header="{DynamicResource LangOptions}" InputGestureText="Ctrl+O" Command="Properties"/>
+                    <Separator/>
+                    <MenuItem Header="{DynamicResource LangExit}" Width="140" Command="Close"/>
+                </MenuItem>
+            </Menu>
         </Grid>
-        <Border  Margin="0,38,0,0" BorderBrush="{DynamicResource PrimaryColor}" BorderThickness="2">
+        <Border  Margin="0,29,0,0" BorderBrush="{DynamicResource PrimaryColor}" BorderThickness="2,0,2,2">
             <Grid x:Name="BodyGrid" Background="{DynamicResource BackgroundColor}" MouseDown="Drag"/>
         </Border>
-        <Popup x:Name="PopSettings" PopupAnimation="Fade" Width="400" IsOpen="False" SnapsToDevicePixels="True" Panel.ZIndex="100" Placement="Left" StaysOpen="False" Height="{Binding ActualHeight, ElementName=Window, Mode=OneWay}" HorizontalOffset="{Binding Width, Mode=OneWay, RelativeSource={RelativeSource Self}}">
+        <Popup x:Name="PopSettings" PopupAnimation="Fade" Width="400" IsOpen="False" SnapsToDevicePixels="True" Panel.ZIndex="100" Placement="Left" StaysOpen="False" Height="{Binding ActualHeight, ElementName=Window, Mode=OneWay}" HorizontalOffset="{Binding Width, Mode=OneWay, RelativeSource={RelativeSource Self}}" Closed="OnMenuClosing" Opened="OnMenuOpening">
             <Popup.Effect>
                 <DropShadowEffect ShadowDepth="2" BlurRadius="4" Color="{DynamicResource ShadowColor}"/>
             </Popup.Effect>
@@ -132,7 +155,7 @@
                                         <Label Grid.Column="0" Grid.Row="11"  Content="{DynamicResource LangFontHighlight}" Foreground="{DynamicResource TextOnLightColor}" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
                                     </Grid>
                                 </ScrollViewer>
-                                <Button Width="30" Style="{DynamicResource TranspButton}" Margin="0,2,2,0" Height="30" HorizontalAlignment="Right" Click="PopupClose_OnClick" Panel.ZIndex="10">
+                                <Button Width="24" Style="{DynamicResource TranspButton}" Margin="0,2,2,0" Height="30" HorizontalAlignment="Right" Click="PopupClose_OnClick" Panel.ZIndex="10">
                                     <Border>
                                         <Path Data="{StaticResource Exit}" Fill="{DynamicResource SecondaryColor}" Stretch="Uniform"/>
                                     </Border>
@@ -149,7 +172,7 @@
                             <Grid Background="{DynamicResource AlternativeBackgroundColor}">
                                 <ListBox x:Name="LangBox" Margin="0,40,0,20" HorizontalAlignment="Center" Width="200" DataContext="{Binding}" BorderThickness="0"/>
                                 <Label Content="{DynamicResource LangLanguages}" HorizontalAlignment="Left" Margin="83,6,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextOnLightColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="{DynamicResource FontFamilyHighlight}" FontSize="{DynamicResource FontSizeBig}"/>
-                                <Button Width="30" Style="{DynamicResource TranspButton}" Margin="0,2,2,0" Height="30" HorizontalAlignment="Right" Click="PopupClose_OnClick" Panel.ZIndex="10">
+                                <Button Width="24" Style="{DynamicResource TranspButton}" Margin="0,2,2,0" Height="30" HorizontalAlignment="Right" Click="PopupClose_OnClick" Panel.ZIndex="10">
                                     <Border>
                                         <Path Data="{StaticResource Exit}" Fill="{DynamicResource SecondaryColor}" Stretch="Uniform"/>
                                     </Border>
