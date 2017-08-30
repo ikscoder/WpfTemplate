@@ -1,0 +1,14 @@
+﻿<Application x:Class="Wpf_Template.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="LoadingScreen.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/LDarkBlue.xaml"/>
+                <ResourceDictionary Source="Languages/English.xaml" />
+                <ResourceDictionary Source="Template/ControlStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
