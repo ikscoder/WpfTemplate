@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Effects;
+using System.Windows.Shapes;
 
 namespace Wpf_Template
 {
@@ -72,12 +73,80 @@ namespace Wpf_Template
         {
             Settings.Current.AppLanguage = (Settings.Language)LangBox.SelectedItem;
         }
-
-        #endregion
-
         private void PopupClose_OnClick(object sender, RoutedEventArgs e)
         {
             PopSettings.IsOpen = false;
         }
+
+        #region ResizeWindows
+
+        private bool _resizeInProcess;
+
+
+        private void Resize_Init(object sender, MouseButtonEventArgs e)
+        {
+            var senderRect = sender as Rectangle;
+            if (senderRect == null) return;
+            _resizeInProcess = true;
+            senderRect.CaptureMouse();
+        }
+
+        private void Resize_End(object sender, MouseButtonEventArgs e)
+        {
+            var senderRect = sender as Rectangle;
+            if (senderRect == null) return;
+            _resizeInProcess = false;
+            senderRect.ReleaseMouseCapture();
+        }
+
+        private void Resizeing_Form(object sender, MouseEventArgs e)
+        {
+            const int step = 1;
+            if (!_resizeInProcess) return;
+            var senderRect = sender as Rectangle;
+            var mainWindow = senderRect?.Tag as Window;
+            if (mainWindow == null) return;
+            double width = e.GetPosition(mainWindow).X;
+            double height = e.GetPosition(mainWindow).Y;
+            senderRect.CaptureMouse();
+            if (senderRect.Name.ToLower().Contains("right"))
+            {
+                width += step;
+                if (width > 0)
+                    mainWindow.Width = width;
+            }
+            if (senderRect.Name.ToLower().Contains("left") && mainWindow.Width - width - step >= MinWidth)
+            {
+
+                width -= step;
+                mainWindow.Left += width;
+                width = mainWindow.Width - width;
+                if (width > 0)
+                {
+                    mainWindow.Width = width;
+                }
+            }
+            if (senderRect.Name.ToLower().Contains("bottom"))
+            {
+                height += step;
+                if (height > 0)
+                    mainWindow.Height = height;
+            }
+            if (senderRect.Name.ToLower().Contains("top") && mainWindow.Height - height - step > MinHeight)
+            {
+                height -= step;
+                mainWindow.Top += height;
+                height = mainWindow.Height - height;
+                if (height > 0)
+                {
+                    mainWindow.Height = height;
+                }
+            }
+        }
+        #endregion
+        
+        #endregion
+
+
     }
 }

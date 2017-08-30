@@ -10,8 +10,26 @@
     <Window.Resources>
         <local:ColorToSolidColorBrushValueConverter x:Key="ColorToSolidColorBrushValueConverter"/>
         <local:FontFamilyToStringValueConverter x:Key="FontFamilyToStringValueConverter"/>
+        <Style x:Key="RectBorderStyle" TargetType="{x:Type Rectangle}">
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Visibility" Value="Visible" />
+            <Setter Property="Fill" Value="Transparent" />
+            <Setter Property="Tag" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}" />
+            <EventSetter Event="MouseLeftButtonDown" Handler="Resize_Init"/>
+            <EventSetter Event="MouseLeftButtonUp" Handler="Resize_End"/>
+            <EventSetter Event="MouseMove" Handler="Resizeing_Form"/>
+        </Style>
     </Window.Resources>
     <Grid>
+        <Rectangle x:Name="LeftSizeGrip" Width="8" HorizontalAlignment="Left" Cursor="SizeWE" Style="{StaticResource RectBorderStyle}" Panel.ZIndex="200" />
+        <Rectangle x:Name="RightSizeGrip" Width="8" HorizontalAlignment="Right" Cursor="SizeWE" Style="{StaticResource RectBorderStyle}"  Panel.ZIndex="200"/>
+        <Rectangle x:Name="TopSizeGrip" Height="8" VerticalAlignment="Top" Cursor="SizeNS" Style="{StaticResource RectBorderStyle}"  Panel.ZIndex="200"/>
+        <Rectangle x:Name="BottomSizeGrip" Height="8" VerticalAlignment="Bottom" Cursor="SizeNS" Style="{StaticResource RectBorderStyle}"  Panel.ZIndex="200"/>
+        <!--  Corners  -->
+        <Rectangle x:Name="TopLeftSizeGrip" Width="8" Height="8" HorizontalAlignment="Left" VerticalAlignment="Top" Cursor="SizeNWSE" Style="{StaticResource RectBorderStyle}"  Panel.ZIndex="200"/>
+        <Rectangle x:Name="BottomRightSizeGrip" Width="8" Height="8" HorizontalAlignment="Right" VerticalAlignment="Bottom" Cursor="SizeNWSE" Style="{StaticResource RectBorderStyle}"  Panel.ZIndex="200"/>
+        <Rectangle x:Name="TopRightSizeGrip" Width="8" Height="8" HorizontalAlignment="Right" VerticalAlignment="Top" Cursor="SizeNESW" Style="{StaticResource RectBorderStyle}" Panel.ZIndex="200" />
+        <Rectangle x:Name="BottomLeftSizeGrip" Width="8" Height="8" HorizontalAlignment="Left" VerticalAlignment="Bottom" Cursor="SizeNESW" Style="{StaticResource RectBorderStyle}"  Panel.ZIndex="200"/>
         <Grid x:Name="HeaderGrid" Background="{DynamicResource PrimaryColor}" Height="40" VerticalAlignment="Top" MouseDown="Drag">
             <Button x:Name="BExit" Width="24" Style="{DynamicResource TranspButton}" Margin="0,0,5,0" Height="40" HorizontalAlignment="Right" Click="BExit_Click">
                 <Border>
