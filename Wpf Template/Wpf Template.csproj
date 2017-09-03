@@ -78,14 +78,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\RoundProgressBar.xaml.cs">
+      <DependentUpon>RoundProgressBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Template\ColorCollections.cs" />
     <Compile Include="Template\Log.cs" />
     <Compile Include="Template\Converters.cs" />
     <Compile Include="Template\CustomTheme.cs" />
-    <Compile Include="Controls\RoundProgressBar.xaml.cs" />
     <Compile Include="Template\Settings.cs" />
-    <Compile Include="Controls\WaitingButton.xaml.cs" />
-    <Compile Include="Controls\WMessage.xaml.cs" />
+    <Compile Include="Controls\WaitingButton.xaml.cs">
+      <DependentUpon>WaitingButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WMessage.xaml.cs">
+      <DependentUpon>WMessage.xaml</DependentUpon>
+    </Compile>
     <Page Include="Languages\English.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -94,15 +100,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Template\ControlStyles.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Controls\RoundProgressBar.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\WaitingButton.xaml">
+    <Page Include="Template\ControlStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -157,9 +159,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\WMessage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Controls\WaitingButton.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\WMessage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

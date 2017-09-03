@@ -7,7 +7,7 @@ namespace Wpf_Template
 {
     public partial class WaitingButton
     {
-        public enum WaitingPath { Wait1, Wait2, Wait3, Wait4, Wait5, Wait6, Wait7, Wait8, Wait9, Wait10, Wait11, Wait12, Wait13};
+        public enum WaitingPath { Wait1, Wait2, Wait3, Wait4, Wait5, Wait6, Wait7, Wait8, Wait9, Wait10, Wait11, Wait12, Wait13 };
         public WaitingButton()
         {
             InitializeComponent();
@@ -18,7 +18,7 @@ namespace Wpf_Template
             switch ((sender as WaitingButton)?.WaitingPathValue)
             {
                 case WaitingPath.Wait1:
-                    ((WaitingButton) sender).Waiting.Data = (Geometry)Application.Current.Resources["Wait1"];
+                    ((WaitingButton)sender).Waiting.Data = (Geometry)Application.Current.Resources["Wait1"];
                     break;
                 case WaitingPath.Wait2:
                     ((WaitingButton)sender).Waiting.Data = (Geometry)Application.Current.Resources["Wait2"];
@@ -72,8 +72,8 @@ namespace Wpf_Template
         {
             var da = new DoubleAnimation(0, 359, new Duration(TimeSpan.FromMilliseconds(1200)));
             var rt = new RotateTransform();
-            ((UIElement) sender).RenderTransform = rt;
-            ((UIElement) sender).RenderTransformOrigin = new Point(0.5, 0.5);
+            ((UIElement)sender).RenderTransform = rt;
+            ((UIElement)sender).RenderTransformOrigin = new Point(0.5, 0.5);
             da.RepeatBehavior = RepeatBehavior.Forever;
             rt.BeginAnimation(RotateTransform.AngleProperty, da);
         }

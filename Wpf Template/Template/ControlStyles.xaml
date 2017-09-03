@@ -1036,8 +1036,8 @@
                             <Setter TargetName="outerBorder" Property="BorderBrush" Value="{DynamicResource SecondaryLightColor}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="outerBorder" Property="Background" Value="#55ACACAC" />
-                            <Setter TargetName="outerBorder" Property="BorderBrush" Value="#55ACACAC" />
+                            <Setter TargetName="outerBorder" Property="Background" Value="{DynamicResource DisabledColor}" />
+                            <Setter TargetName="outerBorder" Property="BorderBrush" Value="{DynamicResource DisabledColor}" />
                             <Setter TargetName="innerBorder" Property="Width" Value="4" />
                             <Setter TargetName="innerBorder" Property="Height" Value="4" />
                             <Setter TargetName="innerBorder" Property="CornerRadius" Value="2" />
@@ -1054,13 +1054,13 @@
                 <ColumnDefinition Width="Auto" MinWidth="{TemplateBinding MinWidth}"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <TickBar x:Name="TopTick" Visibility="Collapsed" Fill="LightGray" Placement="Left" SnapsToDevicePixels="True"
+            <TickBar x:Name="TopTick" Visibility="Collapsed" Fill="{DynamicResource SecondaryDarkColor}" Placement="Left" SnapsToDevicePixels="True"
                  Width="4" Margin="0,0,2,0" />
             <Border x:Name="TrackBackground"
                 Grid.Column="1"
                 Margin="0,10"
                 BorderThickness="2"
-                BorderBrush="LightGray"
+                BorderBrush="{DynamicResource SecondaryColor}"
                 HorizontalAlignment="Center" Width="4" />
             <Track x:Name="PART_Track" Grid.Column="1">
                 <Track.DecreaseRepeatButton>
@@ -1073,7 +1073,7 @@
                     <Thumb x:Name="Thumb" Style="{StaticResource SliderThumbStyle}" />
                 </Track.Thumb>
             </Track>
-            <TickBar x:Name="BottomTick" Grid.Column="2" Visibility="Collapsed" Fill="LightGray" Placement="Right"
+            <TickBar x:Name="BottomTick" Grid.Column="2" Visibility="Collapsed" Fill="{DynamicResource SecondaryDarkColor}" Placement="Right"
                  Width="4" Margin="2,0,0,0" SnapsToDevicePixels="True" />
         </Grid>
         <ControlTemplate.Triggers>
@@ -1096,13 +1096,13 @@
                 <RowDefinition Height="Auto" MinHeight="{TemplateBinding MinHeight}"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <TickBar x:Name="TopTick" Visibility="Collapsed" Fill="LightGray" Placement="Top" SnapsToDevicePixels="True"
+            <TickBar x:Name="TopTick" Visibility="Collapsed" Fill="{DynamicResource SecondaryDarkColor}" Placement="Top" SnapsToDevicePixels="True"
                  Height="4" Margin="0,0,0,2" />
             <Border x:Name="TrackBackground"
                 Grid.Row="1"
                 Margin="10,0"
                 BorderThickness="2"
-                BorderBrush="{DynamicResource SecondaryLightColor}"
+                BorderBrush="{DynamicResource SecondaryColor}"
                 VerticalAlignment="Center" Height="4" />
             <Track x:Name="PART_Track" Grid.Row="1">
                 <Track.DecreaseRepeatButton>
@@ -1115,7 +1115,7 @@
                     <Thumb x:Name="Thumb" Style="{StaticResource SliderThumbStyle}" />
                 </Track.Thumb>
             </Track>
-            <TickBar x:Name="BottomTick" Grid.Row="2" Visibility="Collapsed" Fill="LightGray" Placement="Bottom"
+            <TickBar x:Name="BottomTick" Grid.Row="2" Visibility="Collapsed" Fill="{DynamicResource SecondaryDarkColor}" Placement="Bottom"
                  SnapsToDevicePixels="True" Height="4" Margin="0,2,0,0"/>
         </Grid>
         <ControlTemplate.Triggers>
@@ -1167,7 +1167,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="RepeatButton">
-                    <Border  BorderThickness="1" BorderBrush="Black" Background="Black" Height="3"/>
+                    <Border  BorderThickness="1" BorderBrush="{DynamicResource SecondaryDarkColor}" Background="{DynamicResource SecondaryDarkColor}" Height="3"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -1179,7 +1179,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="RepeatButton">
-                    <Border SnapsToDevicePixels="True" Background="Green"  BorderThickness="1" BorderBrush="YellowGreen" Height="3"/>
+                    <Border  BorderThickness="1" BorderBrush="{DynamicResource SecondaryDarkColor}" Background="{DynamicResource SecondaryDarkColor}" Height="3"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

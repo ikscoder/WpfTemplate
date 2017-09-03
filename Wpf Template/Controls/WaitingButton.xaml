@@ -15,3 +15,4 @@
         <Path x:Name="Waiting" Fill="{DynamicResource SecondaryColor}" Margin="6" HorizontalAlignment="Center" Width="{Binding ActualHeight, ElementName=UserControl, Mode=OneWay}" Stretch="Uniform" Initialized="Path_Initialized" Stroke="{DynamicResource SecondaryColor}" Visibility="{Binding IsWaiting, ElementName=UserControl, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}" Data="{DynamicResource Wait1}"/>
     </Grid>
 </UserControl>
+

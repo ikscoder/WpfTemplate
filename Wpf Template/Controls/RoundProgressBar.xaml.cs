@@ -147,7 +147,7 @@ namespace Wpf_Template
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             if (value?.GetType() != typeof(int) && value?.GetType() != typeof(double)) return null;
-            return (int)value>=1? (int)value-1:value;
+            return (int)value >= 1 ? (int)value - 1 : value;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

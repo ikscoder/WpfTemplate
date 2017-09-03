@@ -51,16 +51,16 @@ namespace Wpf_Template
 
     public static class Message
     {
-        public static bool? Show(string message,string caption, bool isYesNo)
+        public static bool? Show(string message, string caption, bool isYesNo)
         {
-            if (!isYesNo) { Show(message,caption); return false; }
+            if (!isYesNo) { Show(message, caption); return false; }
             var a = new WMessage
             {
-                Yes = {Visibility = Visibility.Visible},
-                No = {Visibility = Visibility.Visible},
-                Ok = {Visibility = Visibility.Hidden},
-                TextBox = {Text = message},
-                Label = {Text = caption}
+                Yes = { Visibility = Visibility.Visible },
+                No = { Visibility = Visibility.Visible },
+                Ok = { Visibility = Visibility.Hidden },
+                TextBox = { Text = message },
+                Label = { Text = caption }
             };
             return a.ShowDialog();
         }
@@ -69,11 +69,11 @@ namespace Wpf_Template
         {
             var a = new WMessage
             {
-                Yes = {Visibility = Visibility.Hidden},
-                No = {Visibility = Visibility.Hidden},
-                Ok = {Visibility = Visibility.Visible},
-                TextBox = {Text = message},
-                Label = { Text = caption}
+                Yes = { Visibility = Visibility.Hidden },
+                No = { Visibility = Visibility.Hidden },
+                Ok = { Visibility = Visibility.Visible },
+                TextBox = { Text = message },
+                Label = { Text = caption }
             };
             a.ShowDialog();
         }
