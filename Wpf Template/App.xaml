@@ -8,6 +8,7 @@
                 <ResourceDictionary Source="Themes/LDarkBlue.xaml"/>
                 <ResourceDictionary Source="Languages/English.xaml" />
                 <ResourceDictionary Source="Template/ControlStyles.xaml"/>
+                <ResourceDictionary Source="Template/XceedStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

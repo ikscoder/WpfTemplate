@@ -113,26 +113,33 @@ namespace Wpf_Template
         {
             try
             {
-                Application.Current.Resources["PrimaryColor"] = PrimaryColor ?? Brushes.Gray;
-                Application.Current.Resources["PrimaryCColor"] = PrimaryColor?.Color ?? Colors.Gray;
-                Application.Current.Resources["BackgroundColor"] = BackgroundColor ?? Brushes.White;
-                Application.Current.Resources["AlternativeBackgroundColor"] = AlternativeBackgroundColor ?? Brushes.White;
+                Application.Current.Resources["PrimaryBrush"] = PrimaryColor ?? Brushes.Gray;
+                Application.Current.Resources["PrimaryColor"] = PrimaryColor?.Color ?? Colors.Gray;
+                Application.Current.Resources["BackgroundBrush"] = BackgroundColor ?? Brushes.White;
+                Application.Current.Resources["BackgroundColor"] = BackgroundColor?.Color ?? Colors.White;
+                Application.Current.Resources["AlternativeBackgroundBrush"] = AlternativeBackgroundColor ?? Brushes.White;
+                Application.Current.Resources["AlternativeBackgroundColor"] = AlternativeBackgroundColor?.Color ?? Colors.White;
  
                 var darkMain = PrimaryColor?.Color.Mix(Colors.Black, 0.7) ?? Colors.Gray;
                 var lightMain = PrimaryColor?.Color.Mix(Colors.White,0.7) ?? Colors.Gray;
-                Application.Current.Resources["PrimaryLightColor"] = new SolidColorBrush(lightMain);
-                Application.Current.Resources["PrimaryDarkColor"] = new SolidColorBrush(darkMain);
+                Application.Current.Resources["PrimaryLightBrush"] = new SolidColorBrush(lightMain);
+                Application.Current.Resources["PrimaryLightColor"] = lightMain;
+                Application.Current.Resources["PrimaryDarkBrush"] = new SolidColorBrush(darkMain);
+                Application.Current.Resources["PrimaryDarkColor"] = darkMain;
 
-                Application.Current.Resources["DisabledColor"] = new SolidColorBrush(PrimaryColor?.Color ?? Colors.Gray) { Opacity = 0.5 };
-                Application.Current.Resources["SecondaryColor"] = SecondaryColor ?? Brushes.Green;
-                Application.Current.Resources["SecondaryLightColor"] = new SolidColorBrush(SecondaryColor?.Color.Mix(Colors.White, 0.7) ?? Colors.Green);
-                Application.Current.Resources["SecondaryDarkColor"] = new SolidColorBrush(SecondaryColor?.Color.Mix(Colors.Black, 0.7) ?? Colors.Green);
+                Application.Current.Resources["DisabledBrush"] = new SolidColorBrush(PrimaryColor?.Color ?? Colors.Gray) { Opacity = 0.5 };
+                Application.Current.Resources["DisabledColor"] = new SolidColorBrush(PrimaryColor?.Color ?? Colors.Gray) { Opacity = 0.5 }.Color;
+                Application.Current.Resources["SecondaryBrush"] = SecondaryColor ?? Brushes.Green;
+                Application.Current.Resources["SecondaryColor"] = SecondaryColor?.Color ?? Colors.Green;
+                Application.Current.Resources["SecondaryLightBrush"] = new SolidColorBrush(SecondaryColor?.Color.Mix(Colors.White, 0.7) ?? Colors.Green);
+                Application.Current.Resources["SecondaryLightColor"] = SecondaryColor?.Color.Mix(Colors.White, 0.7) ?? Colors.Green;
+                Application.Current.Resources["SecondaryDarkBrush"] = new SolidColorBrush(SecondaryColor?.Color.Mix(Colors.Black, 0.7) ?? Colors.Green);
+                Application.Current.Resources["SecondaryDarkColor"] = SecondaryColor?.Color.Mix(Colors.Black, 0.7) ?? Colors.Green;
 
-                Application.Current.Resources["CheckedColor"] = Brushes.LightGreen;
-                Application.Current.Resources["UncheckedColor"] = Brushes.Red;
-
-                Application.Current.Resources["TextOnLightColor"] = TextOnLightColor ?? Brushes.Black;
-                Application.Current.Resources["TextOnDarkColor"] = TextOnDarkColor ?? Brushes.White;
+                Application.Current.Resources["DarkTextBrush"] = TextOnLightColor ?? Brushes.Black;
+                Application.Current.Resources["DarkTextColor"] = TextOnLightColor?.Color ?? Colors.Black;
+                Application.Current.Resources["LightTextBrush"] = TextOnDarkColor ?? Brushes.White;
+                Application.Current.Resources["LightTextColor"] = TextOnDarkColor?.Color ?? Colors.White;
 
                 Application.Current.Resources["ShadowColor"] = ShadowColor;
                 Application.Current.Resources["FontFamilyMain"] = string.IsNullOrEmpty(FontFamilyMain) ? new FontFamilyConverter().ConvertFrom("Segoe UI") : new FontFamilyConverter().ConvertFrom(FontFamilyMain);

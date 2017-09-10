@@ -37,7 +37,7 @@
         <Rectangle x:Name="BottomRightSizeGrip" Width="8" Height="8" HorizontalAlignment="Right" VerticalAlignment="Bottom" Cursor="SizeNWSE" Style="{StaticResource RectBorderStyle}"  Panel.ZIndex="200"/>
         <Rectangle x:Name="TopRightSizeGrip" Width="8" Height="8" HorizontalAlignment="Right" VerticalAlignment="Top" Cursor="SizeNESW" Style="{StaticResource RectBorderStyle}" Panel.ZIndex="200" />
         <Rectangle x:Name="BottomLeftSizeGrip" Width="8" Height="8" HorizontalAlignment="Left" VerticalAlignment="Bottom" Cursor="SizeNESW" Style="{StaticResource RectBorderStyle}"  Panel.ZIndex="200"/>
-        <Grid x:Name="HeaderGrid" Background="{DynamicResource PrimaryColor}" Height="30" VerticalAlignment="Top" MouseDown="Drag">
+        <Grid x:Name="HeaderGrid" Background="{DynamicResource PrimaryBrush}" Height="30" VerticalAlignment="Top" MouseDown="Drag">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="45"/>
                 <ColumnDefinition Width="*"/>
@@ -48,33 +48,33 @@
             </Grid.ColumnDefinitions>
             <Button Grid.Column="5" x:Name="BExit" Style="{DynamicResource MenuIconedDanger}" Margin="0,0,0,0" HorizontalAlignment="Stretch" Click="BExit_Click" VerticalAlignment="Stretch">
                 <Border Width="16">
-                    <Path Data="{StaticResource Exit}" Fill="{DynamicResource TextOnDarkColor}" Stretch="Uniform"/>
+                    <Path Data="{StaticResource Exit}" Fill="{DynamicResource LightTextBrush}" Stretch="Uniform"/>
                 </Border>
             </Button>
             <Button Grid.Column="4" x:Name="BMaximize" Style="{DynamicResource MenuIconed}" Margin="0,0,0,0" HorizontalAlignment="Stretch" Click="BMaximize_Click" VerticalAlignment="Stretch">
                 <Border Width="16">
-                    <Path Data="{StaticResource Maximize}" Fill="{DynamicResource TextOnDarkColor}" Stretch="Uniform"/>
+                    <Path Data="{StaticResource Maximize}" Fill="{DynamicResource LightTextBrush}" Stretch="Uniform"/>
                 </Border>
             </Button>
             <Button Grid.Column="3" x:Name="BMinimize" Style="{DynamicResource MenuIconed}" Margin="0,0,0,0" HorizontalAlignment="Stretch" Click="BMinimize_Click" VerticalAlignment="Stretch">
                 <Border Width="16">
-                    <Path Data="{StaticResource Minimize}" Fill="{DynamicResource TextOnDarkColor}" Stretch="Uniform"/>
+                    <Path Data="{StaticResource Minimize}" Fill="{DynamicResource LightTextBrush}" Stretch="Uniform"/>
                 </Border>
             </Button>
             <Button Grid.Column="2" Style="{DynamicResource MenuIconed}" Margin="0,0,0,0"
                      HorizontalAlignment="Stretch" Click="BAlwaysOnTop_Click" VerticalAlignment="Stretch">
                 <Border x:Name="BAlwaysOnTop" Width="18" RenderTransformOrigin="0.5,0.5">
-                    <Path Data="{StaticResource DrawingPin}" Fill="{DynamicResource TextOnDarkColor}" Stretch="Uniform"/>
+                    <Path Data="{StaticResource DrawingPin}" Fill="{DynamicResource LightTextBrush}" Stretch="Uniform"/>
                 </Border>
             </Button>
             <Button Grid.Column="0" x:Name="BSettings"
                     Click="BSettings_Click" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{DynamicResource MenuIconed}">
                 <Border Width="30">
-                    <Path Data="{StaticResource Settings}" Fill="{DynamicResource TextOnDarkColor}" Stretch="Uniform"/>
+                    <Path Data="{StaticResource Settings}" Fill="{DynamicResource LightTextBrush}" Stretch="Uniform"/>
                 </Border>
             </Button>
-            <Label Grid.Column="1" Content="{Binding Title, ElementName=Window}" HorizontalAlignment="Center" Margin="0,0,0,0" Foreground="{DynamicResource TextOnDarkColor}" FontFamily="{DynamicResource FontFamilyHighlight}" FontSize="{DynamicResource FontSizeBig}" VerticalContentAlignment="Center"/>
-            <Menu Grid.Column="1" HorizontalAlignment="Left" Padding="5" Background="{DynamicResource PrimaryColor}">
+            <Label Grid.Column="1" Content="{Binding Title, ElementName=Window}" HorizontalAlignment="Center" Margin="0,0,0,0" Foreground="{DynamicResource LightTextBrush}" FontFamily="{DynamicResource FontFamilyHighlight}" FontSize="{DynamicResource FontSizeBig}" VerticalContentAlignment="Center"/>
+            <Menu Grid.Column="1" HorizontalAlignment="Left" Padding="5" Background="{DynamicResource PrimaryBrush}">
                 <MenuItem Header="{DynamicResource LangFile}" Style="{DynamicResource PrimaryMenuItem}" SubmenuOpened="OnMenuOpening" SubmenuClosed="OnMenuClosing">
                     <Separator/>
                     <MenuItem Header="{DynamicResource LangOptions}" InputGestureText="Ctrl+O" Command="Properties"/>
@@ -83,15 +83,17 @@
                 </MenuItem>
             </Menu>
         </Grid>
-        <Border  Margin="0,29,0,0" BorderBrush="{DynamicResource PrimaryColor}" BorderThickness="2,0,2,2">
-            <Grid x:Name="BodyGrid" Background="{DynamicResource BackgroundColor}" MouseDown="Drag"/>
+        <Border  Margin="0,29,0,0" BorderBrush="{DynamicResource PrimaryBrush}" BorderThickness="2,0,2,2">
+            <Grid x:Name="BodyGrid" Background="{DynamicResource BackgroundBrush}" MouseDown="Drag">
+                <Calendar HorizontalAlignment="Left" Margin="669,33,0,0" VerticalAlignment="Top"/>
+            </Grid>
         </Border>
         <Popup x:Name="PopSettings" PopupAnimation="Fade" Width="400" IsOpen="False" SnapsToDevicePixels="True" Panel.ZIndex="100" Placement="Left" StaysOpen="False" Height="{Binding ActualHeight, ElementName=Window, Mode=OneWay}" HorizontalOffset="{Binding Width, Mode=OneWay, RelativeSource={RelativeSource Self}}" Closed="OnMenuClosing" Opened="OnMenuOpening">
             <Popup.Effect>
                 <DropShadowEffect ShadowDepth="2" BlurRadius="4" Color="{DynamicResource ShadowColor}"/>
             </Popup.Effect>
-            <Border BorderThickness="1" BorderBrush="{DynamicResource PrimaryColor}">
-                <Grid Background="{DynamicResource PrimaryColor}">
+            <Border BorderThickness="1" BorderBrush="{DynamicResource PrimaryBrush}">
+                <Grid Background="{DynamicResource PrimaryBrush}">
                     <TabControl BorderThickness="0" TabStripPlacement="Right" Padding="0">
                         <TabControl.Resources>
                             <Style TargetType="{x:Type TabPanel}">
@@ -101,13 +103,13 @@
                         <TabItem>
                             <TabItem.Header>
                                 <StackPanel Orientation="Horizontal">
-                                    <Path Data="{StaticResource Style}" Height="30" Width="30" Fill="{DynamicResource SecondaryColor}" Stretch="Uniform" Margin="5,3,5,3" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <Path Data="{StaticResource Style}" Height="30" Width="30" Fill="{DynamicResource SecondaryBrush}" Stretch="Uniform" Margin="5,3,5,3" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                                     <TextBlock Text="{DynamicResource LangSyles}" FontSize="{DynamicResource FontSizeBig}" FontFamily="{DynamicResource FontFamilyHighlight}"  Margin="5,7,22,7"/>
                                 </StackPanel>
                             </TabItem.Header>
-                            <Grid Background="{DynamicResource AlternativeBackgroundColor}">
+                            <Grid Background="{DynamicResource AlternativeBackgroundBrush}">
                                 <ListBox x:Name="ThemeBox" Margin="10,40,0,10" HorizontalAlignment="Left" DataContext="{Binding}" Width="200" BorderThickness="0"/>
-                                <Label Content="{DynamicResource LangSyles}" HorizontalAlignment="Left" Margin="81,6,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextOnLightColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="{DynamicResource FontFamilyHighlight}" FontSize="{DynamicResource FontSizeBig}"/>
+                                <Label Content="{DynamicResource LangSyles}" HorizontalAlignment="Left" Margin="81,6,0,0" VerticalAlignment="Top" Foreground="{DynamicResource DarkTextBrush}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="{DynamicResource FontFamilyHighlight}" FontSize="{DynamicResource FontSizeBig}"/>
                                 <ScrollViewer Margin="220,40,10,40" >
                                     <Grid x:Name="CustomThemePicker" Visibility="Hidden">
                                         <Grid.ColumnDefinitions>
@@ -130,34 +132,34 @@
                                             <RowDefinition Height="30"/>
                                         </Grid.RowDefinitions>
                                         <xctk:ColorPicker Grid.Column="1" Grid.Row="0" SelectedColor="{Binding CustomTheme.PrimaryColor, Converter={StaticResource ColorToSolidColorBrushValueConverter}, Mode=TwoWay, Source={x:Static local:Settings.Current}}" VerticalAlignment="Center" UsingAlphaChannel="False"/>
-                                        <Label Grid.Column="0" Grid.Row="0"  Content="{DynamicResource LangPrimarycolor}" Foreground="{DynamicResource TextOnLightColor}" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+                                        <Label Grid.Column="0" Grid.Row="0"  Content="{DynamicResource LangPrimarycolor}" Foreground="{DynamicResource DarkTextBrush}" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
                                         <xctk:ColorPicker Grid.Column="1" Grid.Row="1" SelectedColor="{Binding CustomTheme.SecondaryColor, Converter={StaticResource ColorToSolidColorBrushValueConverter}, Mode=TwoWay, Source={x:Static local:Settings.Current}}" VerticalAlignment="Center" UsingAlphaChannel="False"/>
-                                        <Label Content="{DynamicResource LangSecondarycolor}"  Grid.Column="0" Grid.Row="1" Foreground="{DynamicResource TextOnLightColor}" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+                                        <Label Content="{DynamicResource LangSecondarycolor}"  Grid.Column="0" Grid.Row="1" Foreground="{DynamicResource DarkTextBrush}" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
                                         <xctk:ColorPicker Grid.Column="1" Grid.Row="2" SelectedColor="{Binding CustomTheme.BackgroundColor, Converter={StaticResource ColorToSolidColorBrushValueConverter}, Mode=TwoWay, Source={x:Static local:Settings.Current}}" VerticalAlignment="Center" UsingAlphaChannel="False"/>
-                                        <Label Grid.Column="0" Grid.Row="2" Content="{DynamicResource LangBackground}" Foreground="{DynamicResource TextOnLightColor}" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+                                        <Label Grid.Column="0" Grid.Row="2" Content="{DynamicResource LangBackground}" Foreground="{DynamicResource DarkTextBrush}" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
                                         <xctk:ColorPicker Grid.Column="1" Grid.Row="3" SelectedColor="{Binding CustomTheme.AlternativeBackgroundColor, Converter={StaticResource ColorToSolidColorBrushValueConverter}, Mode=TwoWay, Source={x:Static local:Settings.Current}}" VerticalAlignment="Center" UsingAlphaChannel="False"/>
-                                        <Label Grid.Column="0" Grid.Row="3" Content="{DynamicResource LangAlternativebackground}" Foreground="{DynamicResource TextOnLightColor}" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+                                        <Label Grid.Column="0" Grid.Row="3" Content="{DynamicResource LangAlternativebackground}" Foreground="{DynamicResource DarkTextBrush}" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
                                         <xctk:ColorPicker Grid.Column="1" Grid.Row="4" SelectedColor="{Binding CustomTheme.TextOnDarkColor, Converter={StaticResource ColorToSolidColorBrushValueConverter}, Mode=TwoWay, Source={x:Static local:Settings.Current}}" VerticalAlignment="Center" UsingAlphaChannel="False"/>
-                                        <Label Grid.Column="0" Grid.Row="4" Content="{DynamicResource LangTextondark}" Foreground="{DynamicResource TextOnLightColor}" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+                                        <Label Grid.Column="0" Grid.Row="4" Content="{DynamicResource LangTextondark}" Foreground="{DynamicResource DarkTextBrush}" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
                                         <xctk:ColorPicker Grid.Column="1" Grid.Row="5" SelectedColor="{Binding CustomTheme.TextOnLightColor, Converter={StaticResource ColorToSolidColorBrushValueConverter}, Mode=TwoWay, Source={x:Static local:Settings.Current}}" VerticalAlignment="Center" UsingAlphaChannel="False"/>
-                                        <Label Grid.Column="0" Grid.Row="5" Content="{DynamicResource LangTextonlight}" Foreground="{DynamicResource TextOnLightColor}" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+                                        <Label Grid.Column="0" Grid.Row="5" Content="{DynamicResource LangTextonlight}" Foreground="{DynamicResource DarkTextBrush}" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
                                         <xctk:ColorPicker Grid.Column="1" Grid.Row="6" SelectedColor="{Binding CustomTheme.ShadowColor, Mode=TwoWay, Source={x:Static local:Settings.Current}}" VerticalAlignment="Center" UsingAlphaChannel="False"/>
-                                        <Label Grid.Column="0" Grid.Row="6" Content="{DynamicResource LangShadow}" Foreground="{DynamicResource TextOnLightColor}" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
-                                        <xctk:DoubleUpDown Grid.Column="1" Grid.Row="7" Value="{Binding CustomTheme.FontSizeBig, Mode=TwoWay, Source={x:Static local:Settings.Current}}" VerticalAlignment="Center" BorderBrush="{DynamicResource PrimaryColor}" Foreground="{DynamicResource TextOnLightColor}" Background="{DynamicResource AlternativeBackgroundColor}" ShowButtonSpinner="False" Maximum="24" Minimum="4"/>
-                                        <Label Grid.Column="0" Grid.Row="7" Content="{DynamicResource LangFontBig}" Foreground="{DynamicResource TextOnLightColor}" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
-                                        <xctk:DoubleUpDown Grid.Column="1" Grid.Row="8" Value="{Binding CustomTheme.FontSizeNormal, Mode=TwoWay, Source={x:Static local:Settings.Current}}" VerticalAlignment="Center" BorderBrush="{DynamicResource PrimaryColor}" Foreground="{DynamicResource TextOnLightColor}" Background="{DynamicResource AlternativeBackgroundColor}" ShowButtonSpinner="False" Maximum="24" Minimum="4"/>
-                                        <Label Grid.Column="0" Grid.Row="8" Content="{DynamicResource LangFontNormal}" Foreground="{DynamicResource TextOnLightColor}" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
-                                        <xctk:DoubleUpDown Grid.Column="1" Grid.Row="9" Value="{Binding CustomTheme.FontSizeSmall, Mode=TwoWay, Source={x:Static local:Settings.Current}}" VerticalAlignment="Center" BorderBrush="{DynamicResource PrimaryColor}" Foreground="{DynamicResource TextOnLightColor}" Background="{DynamicResource AlternativeBackgroundColor}" ShowButtonSpinner="False" Maximum="24" Minimum="4"/>
-                                        <Label Grid.Column="0" Grid.Row="9"  Content="{DynamicResource LangFontSmall}" Foreground="{DynamicResource TextOnLightColor}" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
-                                        <ComboBox Grid.Column="1" Grid.Row="10" SelectedItem="{Binding CustomTheme.FontFamilyMain, Converter={StaticResource FontFamilyToStringValueConverter}, Mode=TwoWay, Source={x:Static local:Settings.Current}}" VerticalAlignment="Center" BorderBrush="{DynamicResource PrimaryColor}" Foreground="{DynamicResource TextOnDarkColor}" Background="{DynamicResource AlternativeBackgroundColor}" ItemsSource="{Binding Source={x:Static Fonts.SystemFontFamilies}}"/>
-                                        <Label Grid.Column="0" Grid.Row="10"  Content="{DynamicResource LangFontMain}" Foreground="{DynamicResource TextOnLightColor}" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
-                                        <ComboBox Grid.Column="1" Grid.Row="11" SelectedItem="{Binding CustomTheme.FontFamilyHighlight, Converter={StaticResource FontFamilyToStringValueConverter}, Mode=TwoWay, Source={x:Static local:Settings.Current}}" VerticalAlignment="Center" BorderBrush="{DynamicResource PrimaryColor}" Foreground="{DynamicResource TextOnDarkColor}" Background="{DynamicResource AlternativeBackgroundColor}" ItemsSource="{Binding Source={x:Static Fonts.SystemFontFamilies}}"/>
-                                        <Label Grid.Column="0" Grid.Row="11"  Content="{DynamicResource LangFontHighlight}" Foreground="{DynamicResource TextOnLightColor}" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+                                        <Label Grid.Column="0" Grid.Row="6" Content="{DynamicResource LangShadow}" Foreground="{DynamicResource DarkTextBrush}" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+                                        <xctk:DoubleUpDown Grid.Column="1" Grid.Row="7" Value="{Binding CustomTheme.FontSizeBig, Mode=TwoWay, Source={x:Static local:Settings.Current}}" VerticalAlignment="Center" BorderBrush="{DynamicResource PrimaryBrush}" Foreground="{DynamicResource DarkTextBrush}" Background="{DynamicResource AlternativeBackgroundBrush}" ShowButtonSpinner="False" Maximum="24" Minimum="4"/>
+                                        <Label Grid.Column="0" Grid.Row="7" Content="{DynamicResource LangFontBig}" Foreground="{DynamicResource DarkTextBrush}" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+                                        <xctk:DoubleUpDown Grid.Column="1" Grid.Row="8" Value="{Binding CustomTheme.FontSizeNormal, Mode=TwoWay, Source={x:Static local:Settings.Current}}" VerticalAlignment="Center" BorderBrush="{DynamicResource PrimaryBrush}" Foreground="{DynamicResource DarkTextBrush}" Background="{DynamicResource AlternativeBackgroundBrush}" ShowButtonSpinner="False" Maximum="24" Minimum="4"/>
+                                        <Label Grid.Column="0" Grid.Row="8" Content="{DynamicResource LangFontNormal}" Foreground="{DynamicResource DarkTextBrush}" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+                                        <xctk:DoubleUpDown Grid.Column="1" Grid.Row="9" Value="{Binding CustomTheme.FontSizeSmall, Mode=TwoWay, Source={x:Static local:Settings.Current}}" VerticalAlignment="Center" BorderBrush="{DynamicResource PrimaryBrush}" Foreground="{DynamicResource DarkTextBrush}" Background="{DynamicResource AlternativeBackgroundBrush}" ShowButtonSpinner="False" Maximum="24" Minimum="4"/>
+                                        <Label Grid.Column="0" Grid.Row="9"  Content="{DynamicResource LangFontSmall}" Foreground="{DynamicResource DarkTextBrush}" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+                                        <ComboBox Grid.Column="1" Grid.Row="10" SelectedItem="{Binding CustomTheme.FontFamilyMain, Converter={StaticResource FontFamilyToStringValueConverter}, Mode=TwoWay, Source={x:Static local:Settings.Current}}" VerticalAlignment="Center" BorderBrush="{DynamicResource PrimaryBrush}" Foreground="{DynamicResource TextOnDarkColor}" Background="{DynamicResource AlternativeBackgroundBrush}" ItemsSource="{Binding Source={x:Static Fonts.SystemFontFamilies}}"/>
+                                        <Label Grid.Column="0" Grid.Row="10"  Content="{DynamicResource LangFontMain}" Foreground="{DynamicResource DarkTextBrush}" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+                                        <ComboBox Grid.Column="1" Grid.Row="11" SelectedItem="{Binding CustomTheme.FontFamilyHighlight, Converter={StaticResource FontFamilyToStringValueConverter}, Mode=TwoWay, Source={x:Static local:Settings.Current}}" VerticalAlignment="Center" BorderBrush="{DynamicResource PrimaryBrush}" Foreground="{DynamicResource TextOnDarkColor}" Background="{DynamicResource AlternativeBackgroundBrush}" ItemsSource="{Binding Source={x:Static Fonts.SystemFontFamilies}}"/>
+                                        <Label Grid.Column="0" Grid.Row="11"  Content="{DynamicResource LangFontHighlight}" Foreground="{DynamicResource DarkTextBrush}" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
                                     </Grid>
                                 </ScrollViewer>
                                 <Button Width="24" Style="{DynamicResource TranspButton}" Margin="0,2,2,0" Height="30" HorizontalAlignment="Right" Click="PopupClose_OnClick" Panel.ZIndex="10">
                                     <Border>
-                                        <Path Data="{StaticResource Exit}" Fill="{DynamicResource SecondaryColor}" Stretch="Uniform"/>
+                                        <Path Data="{StaticResource Exit}" Fill="{DynamicResource SecondaryBrush}" Stretch="Uniform"/>
                                     </Border>
                                 </Button>
                             </Grid>
@@ -165,16 +167,16 @@
                         <TabItem>
                             <TabItem.Header>
                                 <StackPanel Orientation="Horizontal">
-                                    <Path Data="{StaticResource Languages}" Height="30" Width="30" Fill="{DynamicResource SecondaryColor}" Stretch="Uniform" Margin="5,3,5,3" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <Path Data="{StaticResource Languages}" Height="30" Width="30" Fill="{DynamicResource SecondaryBrush}" Stretch="Uniform" Margin="5,3,5,3" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                                     <TextBlock Text="{DynamicResource LangLanguages}" FontSize="{DynamicResource FontSizeBig}" FontFamily="{DynamicResource FontFamilyHighlight}"  Margin="5,7,22,7"/>
                                 </StackPanel>
                             </TabItem.Header>
-                            <Grid Background="{DynamicResource AlternativeBackgroundColor}">
+                            <Grid Background="{DynamicResource AlternativeBackgroundBrush}">
                                 <ListBox x:Name="LangBox" Margin="0,40,0,20" HorizontalAlignment="Center" Width="200" DataContext="{Binding}" BorderThickness="0"/>
-                                <Label Content="{DynamicResource LangLanguages}" HorizontalAlignment="Left" Margin="83,6,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextOnLightColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="{DynamicResource FontFamilyHighlight}" FontSize="{DynamicResource FontSizeBig}"/>
+                                <Label Content="{DynamicResource LangLanguages}" HorizontalAlignment="Left" Margin="83,6,0,0" VerticalAlignment="Top" Foreground="{DynamicResource DarkTextBrush}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="{DynamicResource FontFamilyHighlight}" FontSize="{DynamicResource FontSizeBig}"/>
                                 <Button Width="24" Style="{DynamicResource TranspButton}" Margin="0,2,2,0" Height="30" HorizontalAlignment="Right" Click="PopupClose_OnClick" Panel.ZIndex="10">
                                     <Border>
-                                        <Path Data="{StaticResource Exit}" Fill="{DynamicResource SecondaryColor}" Stretch="Uniform"/>
+                                        <Path Data="{StaticResource Exit}" Fill="{DynamicResource SecondaryBrush}" Stretch="Uniform"/>
                                     </Border>
                                 </Button>
                             </Grid>

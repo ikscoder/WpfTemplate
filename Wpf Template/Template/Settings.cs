@@ -26,7 +26,7 @@ namespace Wpf_Template
         private CustomTheme _customTheme;
 
 
-        public enum Theme { DDarkBlue, LBlue, LCyan, LDarkBlue, LGreen, LGrey, LMetal, LPurple, Custom }
+        public enum Theme { DDarkBlue, LBlue, LDarkBlue, LGreen, LMetal, LPurple, Custom }
         public enum Language { English, Russian }
 
         public CustomTheme CustomTheme

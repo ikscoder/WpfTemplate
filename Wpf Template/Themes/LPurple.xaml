@@ -3,34 +3,51 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!--#region Settings-->
-    <SolidColorBrush x:Key="PrimaryLightColor" Color="#9c4dcc" />
-    <SolidColorBrush x:Key="PrimaryColor" Color="#FF6A1B9A" />
-    <Color x:Key="PrimaryCColor">#FF6A1B9A</Color>
-    <SolidColorBrush x:Key="PrimaryDarkColor" Color="#38006b" />
+    <SolidColorBrush x:Key="PrimaryLightBrush" Color="#9c4dcc" />
+    <Color x:Key="PrimaryLightColor">#9c4dcc</Color>
+    <SolidColorBrush x:Key="PrimaryBrush" Color="#FF6A1B9A" />
+    <Color x:Key="PrimaryColor">#FF6A1B9A</Color>
+    <SolidColorBrush x:Key="PrimaryDarkBrush" Color="#38006b" />
+    <Color x:Key="PrimaryDarkColor">#38006b</Color>
 
-    <SolidColorBrush x:Key="SecondaryLightColor" Color="#ffad42" />
-    <SolidColorBrush x:Key="SecondaryColor" Color="#FFF57C00" />
-    <SolidColorBrush x:Key="SecondaryDarkColor" Color="#bb4d00" />
 
-    <SolidColorBrush x:Key="TextOnDarkColor" Color="#ffffff" />
-    <SolidColorBrush x:Key="TextOnLightColor" Color="#000000" />
+    <SolidColorBrush x:Key="SecondaryLightBrush" Color="#ffad42" />
+    <Color x:Key="SecondaryLightColor">#ffad42</Color>
+    <SolidColorBrush x:Key="SecondaryBrush" Color="#FFF57C00" />
+    <Color x:Key="SecondaryColor">#FFF57C00</Color>
+    <SolidColorBrush x:Key="SecondaryDarkBrush" Color="#bb4d00" />
+    <Color x:Key="SecondaryDarkColor">#bb4d00</Color>
 
-    <SolidColorBrush x:Key="BackgroundColor" Color="#ffffff" />
-    <SolidColorBrush x:Key="AlternativeBackgroundColor" Color="#ffffff" />
+    <SolidColorBrush x:Key="LightTextBrush" Color="#ffffff" />
+    <Color x:Key="LightTextColor">#ffffff</Color>
+    <SolidColorBrush x:Key="DarkTextBrush" Color="#000000" />
+    <Color x:Key="DarkTextColor">#000000</Color>
 
-    <SolidColorBrush x:Key="DisabledColor" Color="#3F9c27b0" />
+    <SolidColorBrush x:Key="BackgroundBrush" Color="#fdfdfd" />
+    <Color x:Key="BackgroundColor">#fdfdfd</Color>
+    <SolidColorBrush x:Key="AlternativeBackgroundBrush" Color="#ffffff" />
+    <Color x:Key="AlternativeBackgroundColor">#ffffff</Color>
 
-    <SolidColorBrush x:Key="CheckedColor" Color="LightGreen" />
-    <SolidColorBrush x:Key="UncheckedColor" Color="Red" />
-    
+    <SolidColorBrush x:Key="DisabledBrush" Color="#3F9c27b0" />
+    <Color x:Key="DisabledColor">#3F9c27b0</Color>
+
+    <SolidColorBrush x:Key="CheckedBrush" Color="#7cb342" />
+    <Color x:Key="CheckedColor">#7cb342</Color>
+    <SolidColorBrush x:Key="UncheckedBrush" Color="#f44336" />
+    <Color x:Key="UncheckedColor">#f44336</Color>
+
     <Color x:Key="ShadowColor" R="97" G="97" B="97" />
 
     <FontFamily x:Key="FontFamilyMain">Segoe UI</FontFamily>
     <FontFamily x:Key="FontFamilyHighlight">Lucida Sans Unicode</FontFamily>
-    <sys:Double x:Key="FontSizeSmall">10</sys:Double>
+
+    <sys:Double x:Key="FontSizeSmall">11</sys:Double>
     <sys:Double x:Key="FontSizeNormal">12</sys:Double>
     <sys:Double x:Key="FontSizeBig">16</sys:Double>
+    <sys:Double x:Key="FontSizeVeryBig">20</sys:Double>
+    <sys:Double x:Key="FontSizeExtremlyBig">36</sys:Double>
 
     <sys:Double x:Key="ScrollWidth">8</sys:Double>
     <!--#endregion-->
+    
 </ResourceDictionary>

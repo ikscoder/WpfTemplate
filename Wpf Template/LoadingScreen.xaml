@@ -5,18 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="{DynamicResource LangLoading}" Height="350" Width="250" ResizeMode="NoResize"  Icon="Resources/Loading.png" WindowStartupLocation="CenterScreen" Cursor="Wait" WindowStyle="None" Loaded="LoadingScreen_OnLoaded">
-    <Grid Background="{DynamicResource PrimaryColor}">
+    <Grid Background="{DynamicResource PrimaryBrush}">
         <Border Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Path Data="{StaticResource Wait1}" Fill="{DynamicResource SecondaryColor}" Stretch="Uniform" Initialized="Path_OnInitialized"/>
+            <Path Data="{StaticResource Wait1}" Fill="{DynamicResource SecondaryBrush}" Stretch="Uniform" Initialized="Path_OnInitialized"/>
         </Border>
-        <Label Content="{DynamicResource LangLoading}" Margin="0,0,0,70" VerticalAlignment="Center" Foreground="{DynamicResource TextOnDarkColor}" FontFamily="{DynamicResource FontFamilyHighlight}" FontSize="{DynamicResource FontSizeBig}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="LoadingLabel" Content="" Margin="0,70,0,0" VerticalAlignment="Center" Foreground="{DynamicResource TextOnDarkColor}" FontFamily="{DynamicResource FontFamilyHighlight}" FontSize="{DynamicResource FontSizeSmall}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <Label Content="{DynamicResource LangLoading}" Margin="0,0,0,70" VerticalAlignment="Center" Foreground="{DynamicResource LightTextBrush}" FontFamily="{DynamicResource FontFamilyHighlight}" FontSize="{DynamicResource FontSizeBig}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label x:Name="LoadingLabel" Content="" Margin="0,70,0,0" VerticalAlignment="Center" Foreground="{DynamicResource LightTextBrush}" FontFamily="{DynamicResource FontFamilyHighlight}" FontSize="{DynamicResource FontSizeSmall}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
         <StackPanel Margin="0,330,0,0" Orientation="Horizontal" FlowDirection="RightToLeft">
-            <Label Content="/ikscoder" Foreground="{DynamicResource TextOnDarkColor}" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontFamily="{DynamicResource FontFamilyHighlight}" FontSize="{DynamicResource FontSizeSmall}" Padding="0" Margin="0,0,0,4" FlowDirection="LeftToRight"/>
+            <Label Content="/ikscoder" Foreground="{DynamicResource LightTextBrush}" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontFamily="{DynamicResource FontFamilyHighlight}" FontSize="{DynamicResource FontSizeSmall}" Padding="0" Margin="0,0,0,4" FlowDirection="LeftToRight"/>
             <Border Width="20" Height="20" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-                <Path Data="{StaticResource GitHub}" Fill="{DynamicResource AlternativeBackgroundColor}" Stretch="Uniform"/>
+                <Path Data="{StaticResource GitHub}" Fill="{DynamicResource AlternativeBackgroundBrush}" Stretch="Uniform"/>
             </Border>
         </StackPanel>
-        <Label x:Name="Version" Content="" Foreground="{DynamicResource TextOnDarkColor}" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontFamily="{DynamicResource FontFamilyHighlight}" FontSize="{DynamicResource FontSizeSmall}" Margin="0,0,0,0" Padding="0"/>
+        <Label x:Name="Version" Content="" Foreground="{DynamicResource LightTextBrush}" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontFamily="{DynamicResource FontFamilyHighlight}" FontSize="{DynamicResource FontSizeSmall}" Margin="0,0,0,0" Padding="0"/>
     </Grid>
 </Window>

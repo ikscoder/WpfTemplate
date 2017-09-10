@@ -41,8 +41,8 @@ namespace Wpf_Template
             {
                 //return !(bool)value ? (Color)(new ColorConverter().ConvertFrom("#ff76ff03")) : (Color)(new ColorConverter().ConvertFrom("#ffb71c1c"));
                 return !(bool) value
-                    ? ((SolidColorBrush)Application.Current.Resources["CheckedColor"]).Color
-                    : ((SolidColorBrush)Application.Current.Resources["UncheckedColor"]).Color;
+                    ? ((Color)Application.Current.Resources["CheckedColor"])
+                    : ((Color)Application.Current.Resources["UncheckedColor"]);
             }
             catch
             {
