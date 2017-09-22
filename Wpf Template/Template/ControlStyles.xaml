@@ -1999,10 +1999,23 @@
                                     <Storyboard>
                                         <DoubleAnimation Storyboard.TargetName="SelectedBackground"
                                    Storyboard.TargetProperty="Opacity"
+                                   To="1"
+                                   Duration="0" />
+                                        <ColorAnimation Duration="0"
+                                  Storyboard.TargetName="NormalText"
+                                  Storyboard.TargetProperty="(TextElement.Foreground).
+                      (SolidColorBrush.Color)"
+                                  To="{DynamicResource LightTextColor}" />
+                                    </Storyboard>
+                                </VisualState>
+                                <!--<VisualState Name="Selected">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="SelectedBackground"
+                                   Storyboard.TargetProperty="Opacity"
                                    To=".75"
                                    Duration="0" />
                                     </Storyboard>
-                                </VisualState>
+                                </VisualState>-->
                             </VisualStateGroup>
                             <VisualStateGroup Name="CalendarButtonFocusStates">
                                 <VisualStateGroup.Transitions>
@@ -2046,7 +2059,7 @@
                                   Storyboard.TargetName="NormalText"
                                   Storyboard.TargetProperty="(TextElement.Foreground).
                       (SolidColorBrush.Color)"
-                                  To="{DynamicResource DisabledColor}" />
+                                  To="{DynamicResource PrimaryLightColor}" />
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>
@@ -2065,9 +2078,10 @@
                                   Storyboard.TargetName="NormalText"
                                   Storyboard.TargetProperty="(TextElement.Foreground).
                       (SolidColorBrush.Color)"
-                                  To="{DynamicResource SecondaryColor}" />
+                                  To="{DynamicResource LightTextColor}" />
                                     </Storyboard>
                                 </VisualState>
+
                             </VisualStateGroup>
                             <VisualStateGroup Name="BlackoutDayStates">
                                 <VisualStateGroup.Transitions>
@@ -2088,12 +2102,13 @@
                      RadiusX="1"
                      RadiusY="1"
                      Opacity="0"
-                     Fill="{DynamicResource PrimaryLightBrush}"/>
+                     Fill="{DynamicResource SecondaryBrush}"/>
                         <Rectangle x:Name="SelectedBackground"
                      RadiusX="1"
                      RadiusY="1"
                      Opacity="0"
-                       Fill="{DynamicResource PrimaryLightBrush}"/>
+                                   
+                       Fill="{DynamicResource PrimaryBrush}"/>
                         <Border Background="{TemplateBinding Background}"
                   BorderThickness="{TemplateBinding BorderThickness}"
                   BorderBrush="{TemplateBinding BorderBrush}" />
@@ -2253,6 +2268,7 @@
                             <TextElement.Foreground>
                                 <SolidColorBrush Color="{DynamicResource DarkTextColor}" />
                             </TextElement.Foreground>
+                            
                         </ContentPresenter>
                         <Rectangle x:Name="CalendarButtonFocusVisual"
                      Visibility="Collapsed"
@@ -2363,11 +2379,11 @@
     <!--Button to go up a level to the year or decade.-->
     <ControlTemplate x:Key="HeaderButtonTemplate"
                  TargetType="{x:Type Button}">
-        <Grid Cursor="Hand">
+        <Grid Cursor="Hand" >
             <VisualStateManager.VisualStateGroups>
                 <VisualStateGroup x:Name="CommonStates">
                     <VisualState x:Name="Normal" />
-                    <VisualState x:Name="MouseOver">
+                    <!--<VisualState x:Name="MouseOver">
                         <Storyboard>
                             <ColorAnimation Duration="0"
                             To="{DynamicResource GlyphMouseOver}"
@@ -2375,7 +2391,7 @@
                 (SolidColorBrush.Color)"
                             Storyboard.TargetName="buttonContent" />
                         </Storyboard>
-                    </VisualState>
+                    </VisualState>-->
                     <VisualState x:Name="Disabled">
                         <Storyboard>
                             <DoubleAnimation Duration="0"
@@ -2390,6 +2406,7 @@
                       Margin="1,4,1,9"
                       ContentTemplate="{TemplateBinding ContentTemplate}"
                       Content="{TemplateBinding Content}"
+                             
                       TextElement.Foreground="{DynamicResource DarkTextBrush}"
                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
@@ -2417,7 +2434,7 @@
                     <Grid x:Name="PART_Root">
                         <Grid.Resources>
                             <SolidColorBrush x:Key="DisabledColor"
-                             Color="#A5FFFFFF" />
+                             Color="{DynamicResource PrimaryLightColor}" />
                         </Grid.Resources>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
@@ -2436,8 +2453,8 @@
                   BorderThickness="{TemplateBinding BorderThickness}"
                   Background="{TemplateBinding Background}"
                   CornerRadius="1">
-                            <Border BorderBrush="{DynamicResource AlternativeBackgroundBrush}"
-                    BorderThickness="2"
+                            <Border BorderBrush="{DynamicResource AlternativeBackgroundBrush}" 
+                    BorderThickness="0"
                     CornerRadius="1">
                                 <Grid>
                                     <Grid.Resources>
@@ -2451,6 +2468,7 @@
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
+                                    
                                     <Button x:Name="PART_PreviousButton"
                         Template="{StaticResource PreviousButtonTemplate}"
                         Focusable="False"
@@ -2467,7 +2485,12 @@
                         VerticalAlignment="Center"
                         Grid.Column="1"
                         Grid.Row="0"
-                        Template="{StaticResource HeaderButtonTemplate}" />
+                                            
+                        Template="{StaticResource HeaderButtonTemplate}">
+                                        <Button.Effect>
+                                            <DropShadowEffect Opacity="0" BlurRadius="0" ShadowDepth="0" Color="Transparent"/>
+                                        </Button.Effect>
+                                    </Button>
                                     <Button x:Name="PART_NextButton"
                         Focusable="False"
                         HorizontalAlignment="Right"
@@ -2480,7 +2503,7 @@
                       Visibility="Visible"
                       Grid.ColumnSpan="3" Grid.Column="0"
                                           Grid.Row="1"
-                      Margin="6,-1,6,6"
+                      Margin="0"
                       HorizontalAlignment="Center">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto" />
@@ -2501,7 +2524,7 @@
                                             <RowDefinition Height="Auto" />
                                         </Grid.RowDefinitions>
                                     </Grid>
-                                    <Grid x:Name="PART_YearView"
+                                    <Grid x:Name="PART_YearView" 
                       Visibility="Hidden"
                       Grid.ColumnSpan="3" Grid.Column="0"
                                           Grid.Row="1"
@@ -2576,28 +2599,11 @@
           Value="{StaticResource CalendarItemStyle}" />
         <Setter Property="Foreground"
           Value="{DynamicResource DarkTextBrush}" />
-        <Setter Property="Background">
-            <Setter.Value>
-                <LinearGradientBrush EndPoint="0.5,1"
-                           StartPoint="0.5,0">
+        <Setter Property="Background" Value="{DynamicResource AlternativeBackgrondBrush}"/>
 
-                    <!--The first two gradient stops specifies the background for 
-            the calendar's heading and navigation buttons.-->
-                    <GradientStop Color="{DynamicResource PrimaryColor}"
-                      Offset="0" />
-                    <GradientStop Color="{DynamicResource BackgrondColor}"
-                      Offset="0.26" />
-
-                    <!--The next gradient stop specifies the background for 
-            the calendar area.-->
-                    <GradientStop Color="{DynamicResource AlternativeBackgrondColor}"
-                      Offset="0.46" />
-                </LinearGradientBrush>
-            </Setter.Value>
-        </Setter>
         <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
         <Setter Property="BorderThickness"
-          Value="1" />
+          Value="0" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Calendar}">

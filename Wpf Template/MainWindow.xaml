@@ -85,7 +85,9 @@
             </Menu>
         </Grid>
         <Border  Margin="0,29,0,0" BorderBrush="{DynamicResource PrimaryBrush}" BorderThickness="2,0,2,2">
-            <Grid x:Name="BodyGrid" Background="{DynamicResource BackgroundBrush}" MouseDown="Drag"/>
+            <Grid x:Name="BodyGrid" Background="{DynamicResource BackgroundBrush}" MouseDown="Drag">
+                <Calendar HorizontalAlignment="Left" Margin="248,211,0,0" VerticalAlignment="Top"/>
+            </Grid>
         </Border>
         <Popup x:Name="PopSettings" PopupAnimation="Fade" Width="400" IsOpen="False" SnapsToDevicePixels="True" Panel.ZIndex="100" Placement="Left" StaysOpen="False" Height="{Binding ActualHeight, ElementName=Window, Mode=OneWay}" HorizontalOffset="{Binding Width, Mode=OneWay, RelativeSource={RelativeSource Self}}" Closed="OnMenuClosing" Opened="OnMenuOpening">
             <Popup.Effect>
