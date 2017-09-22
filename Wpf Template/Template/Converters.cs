@@ -88,6 +88,21 @@ namespace Wpf_Template
         }
     }
 
+    public class InverseSignValueConverter : IValueConverter
+    {
+
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return -1*double.Parse(value.ToString());
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+
+            return -1 * double.Parse(value.ToString());
+        }
+    }
+
     public class TextExistenceToVisibilityConverter : IValueConverter
     {
         #region IValueConverter Members

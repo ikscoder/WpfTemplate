@@ -11,12 +11,12 @@
     <Color x:Key="PrimaryDarkColor">#000a12</Color>
 
 
-    <SolidColorBrush x:Key="SecondaryLightBrush" Color="#ff844c" />
-    <Color x:Key="SecondaryLightColor">#ff844c</Color>
-    <SolidColorBrush x:Key="SecondaryBrush" Color="#FFF4511E" />
-    <Color x:Key="SecondaryColor">#FFF4511E</Color>
-    <SolidColorBrush x:Key="SecondaryDarkBrush" Color="#b91400" />
-    <Color x:Key="SecondaryDarkColor">#b91400</Color>
+    <SolidColorBrush x:Key="SecondaryLightBrush" Color="#ff5c8d" />
+    <Color x:Key="SecondaryLightColor">#ff5c8d</Color>
+    <SolidColorBrush x:Key="SecondaryBrush" Color="#d81b60" />
+    <Color x:Key="SecondaryColor">#d81b60</Color>
+    <SolidColorBrush x:Key="SecondaryDarkBrush" Color="#a00037" />
+    <Color x:Key="SecondaryDarkColor">#a00037</Color>
 
     <SolidColorBrush x:Key="LightTextBrush" Color="#ffffff" />
     <Color x:Key="LightTextColor">#ffffff</Color>
@@ -47,7 +47,7 @@
     <sys:Double x:Key="FontSizeVeryBig">20</sys:Double>
     <sys:Double x:Key="FontSizeExtremlyBig">36</sys:Double>
 
-    <sys:Double x:Key="ScrollWidth">8</sys:Double>
+    <sys:Double x:Key="ScrollWidth">4</sys:Double>
     <!--#endregion-->
 
 </ResourceDictionary>

@@ -47,6 +47,6 @@
     <sys:Double x:Key="FontSizeVeryBig">20</sys:Double>
     <sys:Double x:Key="FontSizeExtremlyBig">36</sys:Double>
 
-    <sys:Double x:Key="ScrollWidth">8</sys:Double>
+    <sys:Double x:Key="ScrollWidth">4</sys:Double>
     <!--#endregion-->
 </ResourceDictionary>
