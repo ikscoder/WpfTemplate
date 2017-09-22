@@ -84,6 +84,9 @@
     <Compile Include="Controls\PieChart.xaml.cs">
       <DependentUpon>PieChart.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\MaterialTextBox.xaml.cs">
+      <DependentUpon>MaterialTextBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Template\ColorCollections.cs" />
     <Compile Include="Template\Log.cs" />
     <Compile Include="Template\Converters.cs" />
@@ -108,6 +111,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\PieChart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MaterialTextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

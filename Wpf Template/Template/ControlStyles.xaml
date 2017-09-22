@@ -341,9 +341,11 @@
 
     <!--#region ListBox-->
     <Style x:Key="{x:Type ListBoxItem}" TargetType="{x:Type ListBoxItem}">
-        <Setter Property="Background" Value="{DynamicResource PrimaryBrush}"/>
-        <Setter Property="Foreground" Value="{DynamicResource LightTextBrush}"/>
-        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Background" Value="{DynamicResource AlternativeBackgroundBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BackgroundBrush}"/>
+        <Setter Property="BorderThickness" Value="0.5"/>
+        <Setter Property="Margin" Value="0.5"/>
         <Setter Property="Padding" Value="1"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -354,19 +356,27 @@
                             Background="{TemplateBinding Background}"
                             Padding="10,10,0,10"
                             SnapsToDevicePixels="true">
-                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        <ContentPresenter  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                     </Border>
                     <ControlTemplate.Triggers>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsSelected"
-                                            Value="True" />
-                            </MultiTrigger.Conditions>
+                        <Trigger Property="IsSelected" Value="True" >
                             <Setter Property="Background"
                                     TargetName="Bd"
                                     Value="{DynamicResource SecondaryBrush}" />
+                            <Setter Property="Foreground"
+                                    Value="{DynamicResource LightTextBrush}" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected"
+                                            Value="False" />
+                                <Condition  Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background"
+                                    TargetName="Bd"
+                                    Value="{DynamicResource BackgroundBrush}" />
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -375,12 +385,12 @@
     </Style>
 
     <Style x:Key="{x:Type ListBox}" TargetType="{x:Type ListBox}">
-        <Setter Property="Background" Value="{DynamicResource AlternativeBackgroundBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
         <Style.Resources>
-            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
+            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="{DynamicResource BackgroundColor}" />
             <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent" />
         </Style.Resources>
     </Style>
@@ -1905,28 +1915,20 @@
     <!--#endregion-->
     
     <!--#endregion-->
-    
+
     <!--#region GridDash-->
     <Style x:Key="GridDash" TargetType="{x:Type Grid}">
         <Style.Setters>
             <Setter Property="Background" Value="{DynamicResource AlternativeBackgroundBrush}"/>
             <Setter Property="UseLayoutRounding" Value="True"/>
             <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="Margin" Value="0,0,4,4"/>
             <Setter Property="Effect">
                 <Setter.Value>
-                    <DropShadowEffect ShadowDepth="0" BlurRadius="0" Color="{DynamicResource ShadowColor}" />
+                    <DropShadowEffect ShadowDepth="1" BlurRadius="4" Color="{DynamicResource ShadowColor}" Direction="300"/>
                 </Setter.Value>
             </Setter>
         </Style.Setters>
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Grid.Effect">
-                    <Setter.Value>
-                        <DropShadowEffect ShadowDepth="0" BlurRadius="16" Color="{DynamicResource ShadowColor}" Opacity="0.4"/>
-                    </Setter.Value>
-                </Setter>
-            </Trigger>
-        </Style.Triggers>
     </Style>
     <!--#endregion-->
 

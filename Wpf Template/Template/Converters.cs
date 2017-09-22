@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media;
@@ -141,6 +142,59 @@ namespace Wpf_Template
 
         public object ConvertBack(object value, Type targetType, object parameter,
             System.Globalization.CultureInfo culture)
+        {
+            throw new NotSupportedException();
+        }
+
+        #endregion
+    }
+
+    public class BoolToCollapsedConverter : IValueConverter
+    {
+        #region IValueConverter Members
+
+        public object Convert(object value, Type targetType, object parameter,
+            CultureInfo culture)
+        {
+            try
+            {
+                return value == null || (bool)value ? Visibility.Collapsed : Visibility.Visible;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter,
+            CultureInfo culture)
+        {
+            throw new NotSupportedException();
+        }
+
+        #endregion
+    }
+
+
+    public class BoolToUnCollapsedConverter : IValueConverter
+    {
+        #region IValueConverter Members
+
+        public object Convert(object value, Type targetType, object parameter,
+            CultureInfo culture)
+        {
+            try
+            {
+                return value != null && (bool)value ? Visibility.Visible : Visibility.Collapsed;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter,
+            CultureInfo culture)
         {
             throw new NotSupportedException();
         }
