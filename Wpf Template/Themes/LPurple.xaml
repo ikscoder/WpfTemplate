@@ -23,8 +23,8 @@
     <SolidColorBrush x:Key="DarkTextBrush" Color="#000000" />
     <Color x:Key="DarkTextColor">#000000</Color>
 
-    <SolidColorBrush x:Key="BackgroundBrush" Color="#fdfdfd" />
-    <Color x:Key="BackgroundColor">#fdfdfd</Color>
+    <SolidColorBrush x:Key="BackgroundBrush" Color="#EEEEEE" />
+    <Color x:Key="BackgroundColor">#EEEEEE</Color>
     <SolidColorBrush x:Key="AlternativeBackgroundBrush" Color="#ffffff" />
     <Color x:Key="AlternativeBackgroundColor">#ffffff</Color>
 

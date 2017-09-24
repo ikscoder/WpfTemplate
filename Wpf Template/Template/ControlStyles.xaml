@@ -81,7 +81,7 @@
             <Setter Property="UseLayoutRounding" Value="True"/>
             <Setter Property="Effect">
                 <Setter.Value>
-                    <DropShadowEffect ShadowDepth="3" BlurRadius="6" Color="{DynamicResource ShadowColor}" Opacity="0.5" Direction="300"/>
+                    <DropShadowEffect ShadowDepth="2" BlurRadius="6" Color="{DynamicResource ShadowColor}" Opacity="0.5" Direction="300"/>
                 </Setter.Value>
             </Setter>
             <Setter Property="Background" Value="{DynamicResource SecondaryBrush}"/>
@@ -92,6 +92,16 @@
                     <Storyboard>
                         <DoubleAnimation
                Storyboard.TargetProperty="Effect.BlurRadius"
+               To="1" Duration="0:0:0.2"
+               AutoReverse="True"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation
+               Storyboard.TargetProperty="Effect.ShadowDepth"
                To="0" Duration="0:0:0.2"
                AutoReverse="True"/>
                     </Storyboard>
@@ -107,7 +117,7 @@
                AutoReverse="False" />
                         <DoubleAnimation
                Storyboard.TargetProperty="Effect.BlurRadius"
-               To="8" Duration="0:0:0.2"
+               To="10" Duration="0:0:0.2"
                AutoReverse="False" />
                     </Storyboard>
                 </BeginStoryboard>
@@ -343,9 +353,9 @@
     <Style x:Key="{x:Type ListBoxItem}" TargetType="{x:Type ListBoxItem}">
         <Setter Property="Background" Value="{DynamicResource AlternativeBackgroundBrush}"/>
         <Setter Property="Foreground" Value="{DynamicResource SecondaryBrush}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource BackgroundBrush}"/>
-        <Setter Property="BorderThickness" Value="0.5"/>
-        <Setter Property="Margin" Value="0.5"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Margin" Value="0"/>
         <Setter Property="Padding" Value="1"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -787,19 +797,19 @@
                   Grid.ColumnSpan="2"
                   CornerRadius="0"
                   Background="Transparent"
-                  BorderBrush="{DynamicResource PrimaryBrush}"
+                  BorderBrush="{TemplateBinding BorderBrush}"
                   BorderThickness="0,0,0,1" />
             <Border 
                   Grid.Column="0"
                   CornerRadius="0" 
                   Margin="1" 
                   Background="Transparent" 
-                  BorderBrush="{DynamicResource PrimaryBrush}"
+                  BorderBrush="{TemplateBinding BorderBrush}"
                   BorderThickness="0,0,0,0" />
             <Path 
                   x:Name="Arrow"
                   Grid.Column="1"     
-                  Fill="{DynamicResource ResourceKey=DarkTextBrush}"
+                  Fill="{TemplateBinding Foreground}"
                   HorizontalAlignment="Center"
                   VerticalAlignment="Center"
                   Data="M0,0L32,0 16,19.7z"
@@ -832,6 +842,8 @@
                             Template="{StaticResource ComboBoxToggleButton}" 
                             Focusable="false"
                             IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                            Foreground="{TemplateBinding Foreground}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
                             ClickMode="Press"/>
                         <ContentPresenter x:Name="ContentSite" IsHitTestVisible="False"  Content="{TemplateBinding SelectionBoxItem}"
                             ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
@@ -846,8 +858,8 @@
                             VerticalAlignment="Center" 
                             Margin="3,3,23,3"
                             Focusable="True" 
-                            Background="{DynamicResource AlternativeBackgroundBrush}"
-                            Foreground="Green"
+                            Background="{TemplateBinding Background}"
+                            Foreground="{TemplateBinding Foreground}"
                             Visibility="Hidden"
                             IsReadOnly="{TemplateBinding IsReadOnly}"/>
                         <Popup 
@@ -888,6 +900,143 @@
                         <Trigger Property="HasItems" Value="false">
                             <Setter TargetName="DropDownBorder" Property="MinHeight" Value="95"/>
                         </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsGrouping" Value="true">
+                            <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+                        </Trigger>
+                        <Trigger SourceName="Popup" Property="AllowsTransparency" Value="true">
+                            <Setter TargetName="DropDownBorder" Property="CornerRadius" Value="0"/>
+                            <Setter TargetName="DropDownBorder" Property="Margin" Value="0,2,0,0"/>
+                        </Trigger>
+                        <Trigger Property="IsEditable"  Value="true">
+                            <Setter Property="IsTabStop" Value="false"/>
+                            <Setter TargetName="PART_EditableTextBox" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="ContentSite" Property="Visibility" Value="Hidden"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="Dropdown2" TargetType="{x:Type ComboBox}">
+        <Setter Property="SnapsToDevicePixels" Value="true"/>
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="MinWidth" Value="120"/>
+        <Setter Property="MinHeight" Value="20"/>
+        <Setter Property="Foreground" Value="{DynamicResource LightTextBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource SecondaryBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBrush}"/>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect ShadowDepth="3" BlurRadius="6" Color="{DynamicResource ShadowColor}" Opacity="0.5" Direction="300"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ComboBox}">
+                    <Grid Background="{TemplateBinding Background}">
+                        <ToggleButton 
+                            x:Name="ToggleButton" 
+                            Template="{StaticResource ComboBoxToggleButton}" 
+                            Focusable="false"
+                            IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                            ClickMode="Press"
+                            Foreground="{TemplateBinding Foreground}" Margin="4"
+                            BorderBrush="{TemplateBinding BorderBrush}"/>
+                        <ContentPresenter x:Name="ContentSite" IsHitTestVisible="False"  Content="{TemplateBinding SelectionBoxItem}"
+                            ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                            ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                            Margin="6,6,26,6"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left" />
+                        <TextBox x:Name="PART_EditableTextBox"
+                            Style="{x:Null}" 
+                            Template="{StaticResource ComboBoxTextBox}" 
+                            HorizontalAlignment="Left" 
+                            VerticalAlignment="Center" 
+                            Margin="3,3,23,3"
+                            Focusable="True" 
+                            Background="{TemplateBinding Background}"
+                            Foreground="{TemplateBinding Foreground}"
+                            Visibility="Hidden"
+                            IsReadOnly="{TemplateBinding IsReadOnly}"/>
+                        <Popup 
+                            x:Name="Popup"
+                            Placement="Bottom"
+                            IsOpen="{TemplateBinding IsDropDownOpen}"
+                            AllowsTransparency="True" 
+                            Focusable="False"
+                            VerticalOffset="{TemplateBinding ActualHeight, Converter={StaticResource InverseSignValueConverter}}"
+                            PopupAnimation="Slide">
+                            <Grid x:Name="DropDown"
+                              SnapsToDevicePixels="True"                
+                              MinWidth="{TemplateBinding ActualWidth}"
+                              MaxHeight="{TemplateBinding MaxDropDownHeight}" Margin="0,0,6,6">
+                                <Grid.Effect>
+                                    <DropShadowEffect ShadowDepth="2" BlurRadius="8" Color="{DynamicResource ShadowColor}" Opacity="0.5" Direction="300"/>
+                                </Grid.Effect>
+                                <Border 
+                                x:Name="DropDownBorder"
+                                Background="{DynamicResource AlternativeBackgroundBrush}"
+
+                                BorderThickness="0"
+                                >
+                                    <Border.BorderBrush>
+                                        <SolidColorBrush Color="{DynamicResource ResourceKey=PrimaryColor}" Opacity="0.05"/>
+                                    </Border.BorderBrush>
+
+                                </Border>
+
+
+                                <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
+                                    <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
+                                </ScrollViewer>
+                            </Grid>
+                        </Popup>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="HasItems" Value="false">
+                            <Setter TargetName="DropDownBorder" Property="MinHeight" Value="95"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource SecondaryLightBrush}"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource SecondaryLightBrush}"/>
+                        </Trigger>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+               Storyboard.TargetProperty="Effect.ShadowDepth"
+               To="5" Duration="0:0:0.2"
+               AutoReverse="False" />
+                                    <DoubleAnimation
+               Storyboard.TargetProperty="Effect.BlurRadius"
+               To="8" Duration="0:0:0.2"
+               AutoReverse="False" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+               Storyboard.TargetProperty="Effect.ShadowDepth"
+               To="3" Duration="0:0:0.2"
+               AutoReverse="False" />
+                                    <DoubleAnimation
+               Storyboard.TargetProperty="Effect.BlurRadius"
+               To="6" Duration="0:0:0.2"
+               AutoReverse="False" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>
                         </Trigger>
@@ -1477,15 +1626,15 @@
     <Style x:Key="{x:Type ToolTip}" TargetType="{x:Type ToolTip}">
         <Style.Setters>
             <Setter Property="Foreground" Value="{DynamicResource DarkTextBrush}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource BackgroundBrush}" />
             <Setter Property="Background" Value="{DynamicResource AlternativeBackgroundBrush}" />
             <Setter Property="FontFamily" Value="{DynamicResource FontFamilyMain}"/>
             <Setter Property="FontSize" Value="{DynamicResource FontSizeNormal}"/>
             <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Margin" Value="8"/>
+            <Setter Property="Margin" Value="4"/>
             <Setter Property="Effect">
                 <Setter.Value>
-                    <DropShadowEffect ShadowDepth="0" BlurRadius="8" Color="{DynamicResource ShadowColor}" />
+                    <DropShadowEffect ShadowDepth="2" BlurRadius="4" Color="{DynamicResource ShadowColor}" Direction="300"/>
                 </Setter.Value>
             </Setter>
         </Style.Setters>
@@ -1572,11 +1721,12 @@
     <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}"
        TargetType="Separator">
         <Setter Property="Height" Value="1"/>
-        <Setter Property="Margin" Value="0,1,0,1"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BackgroundBrush}"/>
+        <Setter Property="Margin" Value="0,3"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Separator">
-                    <Border BorderBrush="{DynamicResource PrimaryLightBrush}"
+                    <Border BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="1"/>
                 </ControlTemplate>
             </Setter.Value>
@@ -1587,7 +1737,8 @@
     <ControlTemplate x:Key="{x:Static MenuItem.TopLevelHeaderTemplateKey}"
                  TargetType="MenuItem">
         <Border Name="Border" >
-            <Grid>
+            <Grid
+                Background="{DynamicResource AlternativeBackgroundBrush}">
                 <ContentPresenter 
 
         ContentSource="Header"
@@ -1871,8 +2022,8 @@
     </Style>
 
     <!--#endregion-->
-    
-        <!--#region ContextMenu-->
+
+    <!--#region ContextMenu-->
     <Style TargetType="{x:Type ContextMenu}">
         <Setter Property="SnapsToDevicePixels"
           Value="True" />
@@ -1887,7 +2038,7 @@
                 <ControlTemplate TargetType="{x:Type ContextMenu}">
                     <Border x:Name="Border"
                 Background="{DynamicResource AlternativeBackgroundBrush}"
-                BorderThickness="1" BorderBrush="{DynamicResource PrimaryBrush}" Margin="6">
+                BorderThickness="1" BorderBrush="{DynamicResource BackgroundBrush}" Margin="6">
                         <Border.Effect>
 
                             <DropShadowEffect ShadowDepth="3" BlurRadius="6" Color="{DynamicResource ShadowColor}" Opacity="0.5" Direction="300"/>
@@ -1913,7 +2064,7 @@
     </Style>
 
     <!--#endregion-->
-    
+
     <!--#endregion-->
 
     <!--#region GridDash-->
@@ -2617,6 +2768,141 @@
                         Background="{TemplateBinding Background}"
                         Style="{TemplateBinding CalendarItemStyle}" />
                     </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+
+
+    <!--#region Expander-->
+    <ControlTemplate x:Key="ExpanderToggleButton" TargetType="ToggleButton">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <!--<Ellipse
+                   Name="Border"
+                Width="24"
+                Height="24"
+                 Fill="{DynamicResource SecondaryBrush}"
+    Stroke="{DynamicResource SecondaryDarkBrush}"   
+               StrokeThickness="1" 
+                      HorizontalAlignment="Center"
+      VerticalAlignment="Center"
+                Stretch="Uniform"/>-->
+            <Path 
+      Name="Arrow"
+                Panel.ZIndex="1"
+                Margin="4,10"
+      Fill="{DynamicResource SecondaryBrush}"
+      HorizontalAlignment="Center"
+      VerticalAlignment="Center"
+      Data="M0,0L32,0 16,19.745z" Stretch="Uniform"/>
+            <Label Grid.Column="1" Content="{TemplateBinding Tag}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{DynamicResource LightTextBrush}" FontFamily="{DynamicResource FontFamilyHighlight}" FontSize="{DynamicResource FontSizeBig}"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <!--<Trigger Property="ToggleButton.IsMouseOver" Value="true">
+                <Setter TargetName="Border" Property="Fill"
+              Value="{DynamicResource SecondaryLightBrush}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="true">
+                <Setter TargetName="Border" Property="Fill"
+              Value="{DynamicResource SecondaryDarkBrush}" />
+            </Trigger>-->
+            <Trigger Property="IsChecked" Value="true">
+                <Setter TargetName="Arrow" Property="Data"
+              Value="M16,0L32,19.745 0,19.745z" />
+            </Trigger>
+            <!--<Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="Border" Property="Fill"
+              Value="{DynamicResource DisabledBrush}" />
+                <Setter TargetName="Border" Property="Stroke"
+              Value="{DynamicResource DisabledBrush}" />
+                <Setter TargetName="Arrow" Property="Fill"
+              Value="{DynamicResource DisabledBrush}" />
+            </Trigger>-->
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style TargetType="Expander">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Expander">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="36"/>
+                            <RowDefinition Name="ContentRow" Height="0"/>
+                        </Grid.RowDefinitions>
+                        <Border 
+            Name="Border" 
+            Grid.Row="0" 
+            Background="{DynamicResource PrimaryBrush}"
+            BorderBrush="{DynamicResource PrimaryDarkBrush}"
+            
+            BorderThickness="0" 
+            CornerRadius="0" >
+
+                            <Border.Triggers>
+                                <EventTrigger RoutedEvent="MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation
+               Storyboard.TargetProperty="Background.Color"
+               To="{DynamicResource PrimaryLightColor}" Duration="0:0:0"
+               AutoReverse="False"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation
+               Storyboard.TargetProperty="Background.Color"
+               To="{DynamicResource PrimaryColor}" Duration="0:0:0"
+               AutoReverse="False"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Border.Triggers>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <ToggleButton
+                IsChecked="{Binding Path=IsExpanded,Mode=TwoWay,
+                                    RelativeSource={RelativeSource TemplatedParent}}"
+                OverridesDefaultStyle="True" 
+                Template="{DynamicResource ExpanderToggleButton}" 
+                Background="{DynamicResource AlternativeBackgroundBrush}" Tag="{TemplateBinding Header}"/>
+                            </Grid>
+                        </Border>
+                        <Border 
+            Name="Content" 
+            Grid.Row="1" 
+            Background="{DynamicResource BackgroundBrush}"
+            BorderBrush="{DynamicResource PrimaryBrush}" 
+            BorderThickness="0" 
+            CornerRadius="0">
+                            <ContentPresenter/>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsExpanded" Value="True">
+                            <Setter TargetName="ContentRow" Property="Height"
+                    Value="{Binding ElementName=Content,Path=DesiredHeight}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Border" Property="Background"
+                    Value="{DynamicResource DisabledBrush}" />
+                            <Setter TargetName="Border" Property="BorderBrush"
+                    Value="{DynamicResource DisabledBrush}" />
+                            <Setter Property="Foreground"
+                    Value="{DynamicResource DisabledBrush}"/>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
