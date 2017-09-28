@@ -92,7 +92,7 @@ namespace Wpf_Template
 
         public static void Show(object message)
         {
-            Show(message.ToString());
+            Show(message?.ToString());
         }
     }
 }

@@ -30,7 +30,7 @@ namespace Wpf_Template
             }
             catch (Exception exception)
             {
-                Log.Add(new Log.LogMessage(Log.MessageType.ERROR, "Loading: "+exception.Message));
+                App.Log.Error(exception);
                 Message.Show("Loading error: " + exception.Message, (string)Application.Current.Resources["LangError"]);
                 Application.Current.Shutdown(1);
             }

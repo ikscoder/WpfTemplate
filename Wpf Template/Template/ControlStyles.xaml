@@ -1721,7 +1721,8 @@
     <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}"
        TargetType="Separator">
         <Setter Property="Height" Value="1"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource BackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryDarkBrush}"/>
+        <Setter Property="Opacity" Value="0.5"/>
         <Setter Property="Margin" Value="0,3"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -1739,6 +1740,56 @@
         <Border Name="Border" >
             <Grid
                 Background="{DynamicResource AlternativeBackgroundBrush}">
+                <ContentPresenter 
+
+        ContentSource="Header"
+        RecognizesAccessKey="True" 
+                    />
+                <Popup 
+        Name="Popup"
+        Placement="Bottom"
+        IsOpen="{TemplateBinding IsSubmenuOpen}"
+        AllowsTransparency="True" 
+        Focusable="False"
+        PopupAnimation="Fade">
+                    <Border 
+          Name="SubmenuBorder"
+          SnapsToDevicePixels="True"
+          Background="{DynamicResource AlternativeBackgroundBrush}"
+          BorderBrush="{DynamicResource PrimaryBrush}"
+          BorderThickness="1" >
+                        <StackPanel  
+            IsItemsHost="True" 
+            KeyboardNavigation.DirectionalNavigation="Cycle" />
+                    </Border>
+                </Popup>
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsSuspendingPopupAnimation" Value="true">
+                <Setter TargetName="Popup" Property="PopupAnimation" Value="None"/>
+            </Trigger>
+            <Trigger Property="IsHighlighted" Value="true">
+                <Setter TargetName="Border" Property="Background"
+              Value="{DynamicResource PrimaryBrush}"/>
+                <Setter TargetName="Border" Property="BorderBrush"
+              Value="Transparent"/>
+            </Trigger>
+            <Trigger SourceName="Popup" Property="Popup.AllowsTransparency" Value="True">
+                <Setter TargetName="SubmenuBorder" Property="CornerRadius" Value="0,2,2,2"/>
+                <Setter TargetName="SubmenuBorder" Property="Padding" Value="0,0,0,3"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="PrimaryMenuItemTopLevelHeader"
+                 TargetType="MenuItem">
+        <Border Name="Border" >
+            <Grid
+                Background="{DynamicResource PrimaryBrush}">
                 <ContentPresenter 
 
         ContentSource="Header"
@@ -1964,6 +2015,7 @@
 
     <Style x:Key="{x:Type MenuItem}" TargetType="{x:Type MenuItem}">
         <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="{DynamicResource AlternativeBackgroundBrush}"/>
         <Setter Property="Foreground" Value="{DynamicResource DarkTextBrush}"/>
         <Setter Property="FontFamily" Value="{DynamicResource FontFamilyMain}"/>
         <Setter Property="FontSize" Value="{DynamicResource FontSizeBig}"/>
@@ -2002,7 +2054,7 @@
             </Trigger>
             <Trigger Property="Role" Value="TopLevelHeader">
                 <Setter Property="Template"
-              Value="{StaticResource {x:Static MenuItem.TopLevelHeaderTemplateKey}}"/>
+              Value="{StaticResource PrimaryMenuItemTopLevelHeader}"/>
                 <Setter Property="Grid.IsSharedSizeScope" Value="true"/>
             </Trigger>
             <Trigger Property="Role" Value="TopLevelItem">

@@ -152,7 +152,7 @@ namespace Wpf_Template
             }
             catch (Exception e)
             {
-                Log.Add(new Log.LogMessage(Log.MessageType.ERROR, "SetCustomTheme: "+e.Message));
+                App.Log.Error(e);
             }
         }
     }

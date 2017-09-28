@@ -38,33 +38,33 @@
         <Rectangle x:Name="BottomRightSizeGrip" Width="8" Height="8" HorizontalAlignment="Right" VerticalAlignment="Bottom" Cursor="SizeNWSE" Style="{StaticResource RectBorderStyle}"  Panel.ZIndex="200"/>
         <Rectangle x:Name="TopRightSizeGrip" Width="8" Height="8" HorizontalAlignment="Right" VerticalAlignment="Top" Cursor="SizeNESW" Style="{StaticResource RectBorderStyle}" Panel.ZIndex="200" />
         <Rectangle x:Name="BottomLeftSizeGrip" Width="8" Height="8" HorizontalAlignment="Left" VerticalAlignment="Bottom" Cursor="SizeNESW" Style="{StaticResource RectBorderStyle}"  Panel.ZIndex="200"/>
-        <Grid x:Name="HeaderGrid" Background="{DynamicResource PrimaryBrush}" Height="30" VerticalAlignment="Top" MouseDown="Drag">
+        <Grid x:Name="HeaderGrid" Background="{DynamicResource PrimaryBrush}" Height="26" VerticalAlignment="Top" MouseDown="Drag">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="45"/>
+                <ColumnDefinition Width="46"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="40"/>
-                <ColumnDefinition Width="40"/>
-                <ColumnDefinition Width="40"/>
-                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="46"/>
+                <ColumnDefinition Width="46"/>
+                <ColumnDefinition Width="46"/>
+                <ColumnDefinition Width="46"/>
             </Grid.ColumnDefinitions>
             <Button Grid.Column="5" x:Name="BExit" Style="{DynamicResource MenuIconedDanger}" Margin="0,0,0,0" HorizontalAlignment="Stretch" Click="BExit_Click" VerticalAlignment="Stretch">
-                <Border Width="16">
+                <Border Width="12">
                     <Path Data="{StaticResource Exit}" Fill="{DynamicResource LightTextBrush}" Stretch="Uniform"/>
                 </Border>
             </Button>
             <Button Grid.Column="4" x:Name="BMaximize" Style="{DynamicResource MenuIconed}" Margin="0,0,0,0" HorizontalAlignment="Stretch" Click="BMaximize_Click" VerticalAlignment="Stretch">
-                <Border Width="16">
+                <Border Width="12">
                     <Path Data="{StaticResource Maximize}" Fill="{DynamicResource LightTextBrush}" Stretch="Uniform"/>
                 </Border>
             </Button>
             <Button Grid.Column="3" x:Name="BMinimize" Style="{DynamicResource MenuIconed}" Margin="0,0,0,0" HorizontalAlignment="Stretch" Click="BMinimize_Click" VerticalAlignment="Stretch">
-                <Border Width="16">
+                <Border Width="12">
                     <Path Data="{StaticResource Minimize}" Fill="{DynamicResource LightTextBrush}" Stretch="Uniform"/>
                 </Border>
             </Button>
             <Button Grid.Column="2" Style="{DynamicResource MenuIconed}" Margin="0,0,0,0"
                      HorizontalAlignment="Stretch" Click="BAlwaysOnTop_Click" VerticalAlignment="Stretch">
-                <Border x:Name="BAlwaysOnTop" Width="18" RenderTransformOrigin="0.5,0.5">
+                <Border x:Name="BAlwaysOnTop" Width="14" RenderTransformOrigin="0.5,0.5">
                     <Path Data="{StaticResource DrawingPin}" Fill="{DynamicResource LightTextBrush}" Stretch="Uniform"/>
                 </Border>
             </Button>
@@ -74,7 +74,7 @@
                     <Path Data="{StaticResource Settings}" Fill="{DynamicResource LightTextBrush}" Stretch="Uniform"/>
                 </Border>
             </Button>
-            <Label Grid.Column="1" Content="{Binding Title, ElementName=Window}" HorizontalAlignment="Center" Margin="0,0,0,0" Foreground="{DynamicResource LightTextBrush}" FontFamily="{DynamicResource FontFamilyHighlight}" FontSize="{DynamicResource FontSizeBig}" VerticalContentAlignment="Center"/>
+            <Label Grid.Column="1" Content="{Binding Title, ElementName=Window}" HorizontalAlignment="Center" Margin="0,0,0,0" Foreground="{DynamicResource LightTextBrush}" FontFamily="{DynamicResource FontFamilyHighlight}" FontSize="{DynamicResource FontSizeNormal}" VerticalContentAlignment="Center"/>
             <Menu Grid.Column="1" HorizontalAlignment="Left" Padding="5" Background="{DynamicResource PrimaryBrush}">
                 <MenuItem Header="{DynamicResource LangFile}" Style="{DynamicResource PrimaryMenuItem}" SubmenuOpened="OnMenuOpening" SubmenuClosed="OnMenuClosing">
                     <Separator/>
@@ -84,7 +84,7 @@
                 </MenuItem>
             </Menu>
         </Grid>
-        <Border  Margin="0,29,0,0" BorderBrush="{DynamicResource PrimaryBrush}" BorderThickness="2,0,2,2">
+        <Border  Margin="0,26,0,0" BorderBrush="{DynamicResource PrimaryDarkBrush}" BorderThickness="2,1,2,2">
             <Grid x:Name="BodyGrid" Background="{DynamicResource BackgroundBrush}" MouseDown="Drag"/>
         </Border>
         <Popup x:Name="PopSettings" PopupAnimation="Fade" Width="400" IsOpen="False" SnapsToDevicePixels="True" Panel.ZIndex="100" Placement="Left" StaysOpen="False" Height="{Binding ActualHeight, ElementName=Window, Mode=OneWay}" HorizontalOffset="{Binding Width, Mode=OneWay, RelativeSource={RelativeSource Self}}" Closed="OnMenuClosing" Opened="OnMenuOpening">
