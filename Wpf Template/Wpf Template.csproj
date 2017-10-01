@@ -87,19 +87,37 @@
     <Compile Include="Controls\PieChart.xaml.cs">
       <DependentUpon>PieChart.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\MaterialTextBox.xaml.cs">
-      <DependentUpon>MaterialTextBox.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Converters\BooleanColorConverter.cs" />
+    <Compile Include="Converters\BoolToCollapsedConverter.cs" />
+    <Compile Include="Converters\BoolToInvisibilityConverter.cs" />
+    <Compile Include="Converters\BoolToUnCollapsedConverter.cs" />
+    <Compile Include="Converters\ColorToSolidColorBrushValueConverter.cs" />
+    <Compile Include="Converters\ConverterBase.cs" />
+    <Compile Include="Converters\DateTimeToUnixTimeConverter.cs" />
+    <Compile Include="Converters\FontFamilyToStringValueConverter.cs" />
+    <Compile Include="Converters\InverseBooleanConverter.cs" />
+    <Compile Include="Converters\InverseSignValueConverter.cs" />
+    <Compile Include="Converters\InvertBooleanColorConverter.cs" />
+    <Compile Include="Converters\MoneyToColorValueConverter.cs" />
+    <Compile Include="Converters\MTextExistenceToVisibilityConverter.cs" />
+    <Compile Include="Converters\MTextNotExistenceToVisibilityConverter.cs" />
+    <Compile Include="Converters\NumberIsPositiveToColorValueConverter.cs" />
+    <Compile Include="Converters\TextExistenceToVisibilityConverter.cs" />
+    <Compile Include="Converters\UnixTimeToDateConverter.cs" />
+    <Compile Include="Converters\UnixTimeToDateTimeConverter.cs" />
     <Compile Include="Template\ColorCollections.cs" />
-    <Compile Include="Template\Converters.cs" />
     <Compile Include="Template\CustomTheme.cs" />
     <Compile Include="Template\Settings.cs" />
     <Compile Include="Controls\WaitingButton.xaml.cs">
       <DependentUpon>WaitingButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\WMessage.xaml.cs">
+    <Compile Include="Template\UnixTimeExtension.cs" />
+    <Compile Include="WMessage.xaml.cs">
       <DependentUpon>WMessage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ValidationRules\DecimalRule.cs" />
+    <Compile Include="ValidationRules\DateRule.cs" />
+    <Compile Include="ValidationRules\LongRule.cs" />
     <Page Include="Languages\English.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -113,10 +131,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\PieChart.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\MaterialTextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -175,7 +189,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\WMessage.xaml">
+    <Page Include="WMessage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -23,5 +23,9 @@
     <v:String x:Key="LangFontSmall">Small font size</v:String>
     <v:String x:Key="LangFontMain">Main font family</v:String>
     <v:String x:Key="LangFontHighlight">Highlight font family</v:String>
+
+    <v:String x:Key="LangWrongInput">Incorrect value</v:String>
+    <v:String x:Key="LangUncorrectValue">Out of range</v:String>
+    <v:String x:Key="LangUncorrectDate">Too early</v:String>
     <!--#endregion-->
 </ResourceDictionary>

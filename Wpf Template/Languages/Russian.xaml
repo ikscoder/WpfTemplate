@@ -23,6 +23,10 @@
     <v:String x:Key="LangFontSmall">Маленький размер шрифта</v:String>
     <v:String x:Key="LangFontMain">Основной шрифт</v:String>
     <v:String x:Key="LangFontHighlight">Шрифт выделения</v:String>
+
+    <v:String x:Key="LangWrongInput">Некорректное значение</v:String>
+    <v:String x:Key="LangUncorrectValue">Не входит в границы диапазона</v:String>
+    <v:String x:Key="LangUncorrectDate">Слишком рано</v:String>
     <!--#endregion-->
   
 </ResourceDictionary>

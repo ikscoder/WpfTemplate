@@ -60,7 +60,7 @@ namespace Wpf_Template
                 No = { Visibility = Visibility.Visible },
                 Ok = { Visibility = Visibility.Hidden },
                 TextBox = { Text = message },
-                Label = { Text = caption }
+                Label = { Content = caption }
             };
             return a.ShowDialog();
         }
@@ -73,7 +73,7 @@ namespace Wpf_Template
                 No = { Visibility = Visibility.Hidden },
                 Ok = { Visibility = Visibility.Visible },
                 TextBox = { Text = message },
-                Label = { Text = caption }
+                Label = { Content = caption }
             };
             a.ShowDialog();
         }
